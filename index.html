@@ -3,69 +3,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Auma Tantra</title>
+  <title>AUMA Massage</title>
   <style>
     html, body {
-      position: relative;
-      z-index: 0;
-      height: 100%;
       margin: 0;
       padding: 0;
+      font-family: Georgia, serif;
       background-image: url('https://i.ibb.co/jPnScd84/IMG-2848.jpg');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
-      font-family: serif;
+      height: 100%;
+      overflow-x: hidden;
     }
 
-    .title {
-      z-index: 1;
-      position: absolute;
-      top: 30%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 48px;
-      color: gold;
-      text-align: center;
-      text-shadow: 0 0 10px #000;
-    }
-
-    .buttons {
-      z-index: 1;
-      position: absolute;
-      bottom: 5%;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 20px;
-    }
-
-    .btn {
-      padding: 10px 20px;
-      background-color: #2b1e1b;
-      border: 1px solid gold;
-      color: white;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 16px;
-    }
-
-    .btn:hover {
-      background-color: #3e2d29;
-    }
-
+    /* Анимация падающих лепестков */
     @keyframes fall {
-      0% {
-        transform: translateY(-100px) rotate(0deg);
-        opacity: 0;
-      }
-      10% {
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(100vh) rotate(360deg);
-        opacity: 0;
-      }
+      0% { transform: translateY(-100px) rotate(0deg); opacity: 0; }
+      10% { opacity: 1; }
+      100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
     }
 
     .petal {
@@ -77,26 +33,103 @@
       z-index: 0;
       animation: fall linear infinite;
     }
+
+    /* Логотип */
+    .logo {
+      display: block;
+      margin: 40px auto 20px;
+      width: 200px;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      padding: 20px;
+      z-index: 1;
+      position: relative;
+    }
+
+    .card {
+      width: 250px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid gold;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+      text-align: center;
+      backdrop-filter: blur(5px);
+    }
+
+    .card img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+    }
+
+    .btn-group {
+      display: flex;
+      justify-content: space-around;
+      padding: 10px;
+    }
+
+    .btn {
+      padding: 8px 16px;
+      border: none;
+      background: linear-gradient(45deg, #d4af37, #b8860b);
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .btn:hover {
+      background: linear-gradient(45deg, #ffd700, #daa520);
+    }
   </style>
 </head>
 <body>
-  <div class="title">Аума Тантра</div>
-  <div class="buttons">
-    <div class="btn">Позвонить</div>
-    <div class="btn">WhatsApp</div>
-    <div class="btn">Telegram</div>
+
+  <!-- Логотип -->
+  <img src="https://i.postimg.cc/x1n5hyC8/7-C34-E01-D-B9-C2-4-A49-8-DA8-AA9-E5-F559-FC0.png" alt="AUMA Logo" class="logo" />
+
+  <!-- Карточки мастеров -->
+  <div class="container">
+    <div class="card">
+      <img src="master1.jpg" alt="Мастер 1" />
+      <div class="btn-group">
+        <button class="btn">Contact</button>
+        <button class="btn">WhatsApp</button>
+      </div>
+    </div>
+    <div class="card">
+      <img src="master2.jpg" alt="Мастер 2" />
+      <div class="btn-group">
+        <button class="btn">Contact</button>
+        <button class="btn">WhatsApp</button>
+      </div>
+    </div>
   </div>
 
+  <!-- Анимация лепестков -->
   <script>
-    for (let i = 0; i < 15; i++) {
-      let petal = document.createElement("img");
+    for (let i = 0; i < 20; i++) {
+      const petal = document.createElement("img");
       petal.src = "https://i.postimg.cc/cHm5k97s/List-png.png";
       petal.className = "petal";
       petal.style.left = Math.random() * 100 + "vw";
-      petal.style.animationDuration = (5 + Math.random() * 10) + "s";
-      petal.style.animationDelay = Math.random() * 10 + "s";
+      petal.style.animationDuration = (5 + Math.random() * 5) + "s";
+      petal.style.animationDelay = Math.random() * 5 + "s";
       document.body.appendChild(petal);
     }
   </script>
+
 </body>
 </html>
