@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="he">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -15,42 +15,6 @@
       background-repeat: no-repeat;
       font-family: Georgia, serif;
       overflow-x: hidden;
-    }
-
-    .overlay {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.8);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
-    }
-
-    .popup {
-      background: white;
-      max-width: 90%;
-      max-height: 90%;
-      overflow-y: auto;
-      padding: 30px;
-      border-radius: 12px;
-      text-align: right;
-      direction: rtl;
-      font-size: 16px;
-      line-height: 1.6;
-      box-shadow: 0 0 20px gold;
-    }
-
-    .agree-btn {
-      margin-top: 20px;
-      background: gold;
-      border: none;
-      padding: 10px 20px;
-      font-weight: bold;
-      font-size: 16px;
-      border-radius: 8px;
-      cursor: pointer;
     }
 
     .logo {
@@ -127,66 +91,19 @@
 </head>
 <body>
 
-  <!-- Всплывающее окно -->
-  <div class="overlay" id="rulesOverlay">
-    <div class="popup">
-      <div>
-        🌸 <b>אחריות וגבולות מקצועיים</b><br><br>
-        <b>מה אני מציעה:</b><br>
-        העבודה שלי נועדה ליצור מרחב בטוח, מכבד ותומך לטיפול גופני ואנרגטי.<br>
-        אני מציעה:
-        <ul>
-          <li>– טיפול מגע ועיסוי</li>
-          <li>– איזון אנרגטי</li>
-          <li>– טקסים של אהבה עצמית ומגע מודע</li>
-          <li>– פרקטיקות מקודשות בהשראת מסורות עתיקות</li>
-        </ul>
-        🌿 איני מספקת שירותים אינטימיים.<br><br>
-
-        <b>אחריות המטופל/ת:</b><br>
-        אנא הגיעו למפגש:
-        <ul>
-          <li>– מתוך כבוד לעצמכם ולי</li>
-          <li>– בגוף נקי ובמצב רגשי מאוזן</li>
-          <li>– בהבנה שהמפגש אינו כולל אינטראקציה מינית</li>
-        </ul>
-        אני שומרת לעצמי את הזכות להפסיק את המפגש אם יופר הגבול המקצועי שלי.<br><br>
-
-        <b>הגבולות שלי:</b>
-        <ul>
-          <li>– איני מספקת שירותים אינטימיים</li>
-          <li>– אין עירום, למעט במקרים בהם הדבר רלוונטי, בטוח ומוסכם מראש</li>
-          <li>– כל מגע מתרחש אך ורק בתוך גבולות טיפוליים ברורים ומוסכמים</li>
-          <li>– כל חציית גבול עלולה להוביל לסיום מיידי של המפגש</li>
-        </ul>
-
-        <b>סודיות וביטחון:</b>
-        <ul>
-          <li>– כל מה שקורה במפגש נשאר בינינו</li>
-          <li>– ניתן להפסיק את המפגש בכל שלב אם מתעורר חוסר נוחות</li>
-          <li>– אני פועלת באווירה של כבוד, רוך ורגישות לצרכים שלכם</li>
-        </ul>
-
-        <b>ביטול ותשלום:</b><br>
-        ניתן לבטל או לדחות מפגש עד 24 שעות מראש. ביטול מאוחר יותר יחויב בתשלום מלא.
-      </div>
-      <button class="agree-btn" onclick="closeOverlay()">אני מסכים/מה</button>
-    </div>
-  </div>
-
-  <!-- Логотип -->
+  <!-- Logo -->
   <img class="logo" src="https://i.postimg.cc/x1n5hyC8/7-C34-E01-D-B9-C2-4-A49-8-DA8-AA9-E5-F559-FC0.png" alt="Auma Massage Logo" />
 
-  <!-- Фото и кнопки -->
+  <!-- Therapist Photo + Buttons -->
   <div class="photo-section">
-    <img class="therapist-photo" src="https://i.postimg.cc/nLGHrJTt/IMG-3002.jpg" alt="Therapist" />
+    <img class="therapist-photo" src="https://i.postimg.cc/nLGHrJTt/IMG-3002.jpg" alt="Therapist Photo" />
     <div class="contact-buttons">
       <div class="contact-btn">☎️</div>
       <div class="contact-btn">Telegram</div>
     </div>
   </div>
 
-  <!-- Падающие лепестки -->
+  <!-- Petals Animation -->
   <script>
     for (let i = 0; i < 15; i++) {
       let petal = document.createElement("img");
@@ -196,10 +113,6 @@
       petal.style.animationDuration = (5 + Math.random() * 10) + "s";
       petal.style.animationDelay = Math.random() * 10 + "s";
       document.body.appendChild(petal);
-    }
-
-    function closeOverlay() {
-      document.getElementById("rulesOverlay").style.display = "none";
     }
   </script>
 
