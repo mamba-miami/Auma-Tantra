@@ -22,6 +22,8 @@
       margin: 50px auto 20px;
       width: 200px;
       animation: float 5s ease-in-out infinite;
+      z-index: 2;
+      position: relative;
     }
 
     @keyframes float {
@@ -47,6 +49,47 @@
     }
 
     .agreement-button:hover {
+      box-shadow: 0 0 10px gold;
+    }
+
+    .popup {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.7);
+      z-index: 10;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .popup-content {
+      background-color: rgba(0, 0, 0, 0.85);
+      border: 1px solid gold;
+      padding: 30px;
+      max-width: 90%;
+      max-height: 80%;
+      overflow-y: auto;
+      border-radius: 10px;
+      color: #fff5f6;
+      font-size: 14px;
+      line-height: 1.6;
+      direction: rtl;
+    }
+
+    .close-popup {
+      display: block;
+      margin: 20px auto 0;
+      padding: 8px 20px;
+      font-size: 14px;
+      border: 1px solid gold;
+      background-color: rgba(255,255,255,0.05);
+      color: #fff5f6;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .close-popup:hover {
       box-shadow: 0 0 10px gold;
     }
 
@@ -132,7 +175,7 @@
 
   <img src="https://i.postimg.cc/x1n5hyC8/7-C34-E01-D-B9-C2-4-A49-8-DA8-AA9-E5-F559-FC0.png" alt="Auma Logo" class="logo" />
 
-  <button class="agreement-button" onclick="alert('תוכן ההסכם יוצג כאן בעתיד')">הסכם</button>
+  <button class="agreement-button" onclick="document.getElementById('popup').style.display='flex'">הסכם</button>
 
   <div class="photo-section">
     <a href="info.html" class="photo-link">
@@ -142,6 +185,31 @@
     <div class="contact-buttons">
       <button class="contact-button">📞 טלפון</button>
       <button class="contact-button">Telegram</button>
+    </div>
+  </div>
+
+  <!-- Popup Modal -->
+  <div class="popup" id="popup">
+    <div class="popup-content">
+      <h3>🌸 אחריות וגבולות מקצועיים</h3>
+      <p>מה אני מציעה:
+      העבודה שלי נועדה ליצור מרחב בטוח, מכבד ותומך לטיפול גופני ואנרגטי. אני מציעה:
+      טיפול מגע ועיסוי, איזון אנרגטי, טקסים של אהבה עצמית, פרקטיקות בהשראת מסורות עתיקות.
+      🌿 איני מספקת שירותים אינטימיים.</p>
+
+      <p>אחריות המטופל/ת:
+      אנא הגיעו למפגש בגוף נקי ובמצב רגשי מאוזן. בהבנה שהמפגש אינו כולל אינטראקציה מינית. אני שומרת לעצמי את הזכות להפסיק את המפגש אם יופר הגבול המקצועי שלי.</p>
+
+      <p>הגבולות שלי:
+      אין עירום למעט במקרים בהם הדבר מוסכם מראש. כל מגע מתקיים בגבולות טיפוליים בלבד. כל חציית גבול עלולה להוביל לסיום מיידי של המפגש.</p>
+
+      <p>סודיות וביטחון:
+      כל מה שקורה במפגש נשאר בינינו. ניתן להפסיק בכל שלב. אני פועלת ברוך ובכבוד.</p>
+
+      <p>ביטול ותשלום:
+      ניתן לבטל או לדחות מפגש עד 24 שעות מראש. ביטול מאוחר יחויב בתשלום מלא.</p>
+
+      <button class="close-popup" onclick="document.getElementById('popup').style.display='none'">סגור</button>
     </div>
   </div>
 
