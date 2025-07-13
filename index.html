@@ -2,92 +2,93 @@
 <html lang="he">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Auma Massage</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AUMA Massage</title>
   <style>
     html, body {
       margin: 0;
       padding: 0;
-      height: 100%;
       font-family: Georgia, serif;
       background-image: url('https://i.ibb.co/jPnScd84/IMG-2848.jpg');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
-      position: relative;
+      height: 100%;
       overflow-x: hidden;
     }
 
-    .logo {
+    .floating-logo {
       display: block;
-      margin: 40px auto 10px auto;
-      width: 220px;
+      margin: 30px auto 10px auto;
+      width: 200px;
       animation: float 6s ease-in-out infinite;
     }
 
     @keyframes float {
       0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
+      50% { transform: translateY(-8px); }
     }
 
-    .agreement-button {
+    .agreement-btn {
       display: block;
-      margin: 10px auto 30px auto;
-      padding: 10px 18px;
-      border: 1px solid gold;
-      background-color: rgba(255, 255, 255, 0.05);
-      color: gold;
-      border-radius: 8px;
-      font-size: 15px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-
-    .agreement-button:hover {
-      background-color: rgba(255, 255, 255, 0.15);
-    }
-
-    .popup {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: rgba(0, 0, 0, 0.85);
-      backdrop-filter: blur(6px);
-      z-index: 10;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-      box-sizing: border-box;
-    }
-
-    .popup-content {
-      background: rgba(255, 255, 255, 0.1);
+      margin: 0 auto 30px auto;
+      padding: 10px 20px;
+      background: rgba(255, 255, 255, 0.05);
       color: white;
       border: 1px solid gold;
-      padding: 20px;
-      max-width: 600px;
-      max-height: 80vh;
-      overflow-y: auto;
-      border-radius: 12px;
-      font-size: 16px;
-      direction: rtl;
-    }
-
-    .close-btn {
-      margin-top: 15px;
-      padding: 6px 12px;
-      background-color: rgba(255, 255, 255, 0.1);
-      border: 1px solid gold;
-      color: gold;
-      border-radius: 6px;
+      border-radius: 8px;
       cursor: pointer;
-      float: left;
+      font-size: 16px;
+      backdrop-filter: blur(2px);
+      transition: box-shadow 0.3s ease;
     }
 
-    /* Falling petals animation */
+    .agreement-btn:hover {
+      box-shadow: 0 0 8px gold;
+    }
+
+    .photo-block {
+      width: 270px;
+      margin: 20px auto;
+      border: 2px solid transparent;
+      border-image: linear-gradient(to right, #eac97a, #f8e396);
+      border-image-slice: 1;
+      border-radius: 10px;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .photo-block img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .contact-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin: 12px 0 20px;
+    }
+
+    .btn {
+      padding: 8px 16px;
+      border: 1px solid gold;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.08);
+      color: white;
+      font-size: 14px;
+      cursor: pointer;
+      backdrop-filter: blur(2px);
+      transition: box-shadow 0.3s ease, background 0.3s ease;
+    }
+
+    .btn:hover {
+      box-shadow: 0 0 6px gold;
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    /* Падающие лепестки */
     @keyframes fall {
       0% { transform: translateY(-100px) rotate(0deg); opacity: 0; }
       10% { opacity: 1; }
@@ -98,73 +99,83 @@
       position: fixed;
       top: -50px;
       width: 30px;
+      height: auto;
       pointer-events: none;
       z-index: 0;
       animation: fall linear infinite;
     }
+
+    /* Всплывающее окно */
+    #popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(255, 255, 255, 0.95);
+      padding: 20px;
+      max-width: 90%;
+      max-height: 80%;
+      overflow-y: auto;
+      border: 2px solid gold;
+      border-radius: 10px;
+      display: none;
+      z-index: 1000;
+      direction: rtl;
+      text-align: right;
+    }
+
+    #closePopup {
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      margin-top: 10px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
+
   <!-- Логотип -->
-  <img src="https://i.postimg.cc/x1n5hyC8/7-C34-E01-D-B9-C2-4-A49-8-DA8-AA9-E5-F559-FC0.png" alt="Auma Logo" class="logo"/>
+  <img src="https://i.postimg.cc/x1n5hyC8/7-C34-E01-D-B9-C2-4-A49-8-DA8-AA9-E5-F559-FC0.png" alt="AUMA Logo" class="floating-logo">
 
-  <!-- Кнопка соглашения -->
-  <button class="agreement-button" onclick="openPopup()">הסכם</button>
+  <!-- Кнопка הסכם -->
+  <button class="agreement-btn" onclick="document.getElementById('popup').style.display='block'">הסכם</button>
 
-  <!-- Всплывающее окно -->
-  <div class="popup" id="popup">
-    <div class="popup-content">
-      🌸 אחריות וגבולות מקצועיים
-
-      <br><br>מה אני מציעה:
-      העבודה שלי נועדה ליצור מרחב בטוח, מכבד ותומך לטיפול גופני ואנרגטי.
-      אני מציעה:
-      <br>– טיפול מגע ועיסוי
-      <br>– איזון אנרגטי
-      <br>– טקסים של אהבה עצמית ומגע מודע
-      <br>– פרקטיקות מקודשות בהשראת מסורות עתיקות
-
-      <br><br>🌿 איני מספקת שירותים אינטימיים.
-
-      <br><br>⸻<br><br>
-
-      אחריות המטופל/ת:
-      <br>אנא הגיעו למפגש:
-      <br>– מתוך כבוד לעצמכם ולי
-      <br>– בגוף נקי ובמצב רגשי מאוזן
-      <br>– בהבנה שהמפגש אינו כולל אינטראקציה מינית
-
-      <br><br>אני שומרת לעצמי את הזכות להפסיק את המפגש אם יופר הגבול המקצועי שלי.
-
-      <br><br>⸻<br><br>
-
-      הגבולות שלי:
-      <br>– איני מספקת שירותים אינטימיים
-      <br>– אין עירום, למעט במקרים בהם הדבר רלוונטי, בטוח ומוסכם מראש
-      <br>– כל מגע מתרחש אך ורק בתוך גבולות טיפוליים ברורים ומוסכמים
-      <br>– כל חציית גבול עלולה להוביל לסיום מיידי של המפגש
-
-      <br><br>⸻<br><br>
-
-      סודיות וביטחון:
-      <br>– כל מה שקורה במפגש נשאר בינינו
-      <br>– ניתן להפסיק את המפגש בכל שלב אם מתעורר חוסר נוחות
-      <br>– אני פועלת באווירה של כבוד, רוך ורגישות לצרכים שלכם
-
-      <br><br>⸻<br><br>
-
-      ביטול ותשלום:
-      <br>ניתן לבטל או לדחות מפגש עד 24 שעות מראש.
-      <br>ביטול מאוחר יותר יחויב בתשלום מלא.
-
-      <br><br>
-      <button class="close-btn" onclick="closePopup()">סגור</button>
+  <!-- Фото массажистки -->
+  <div class="photo-block">
+    <img src="https://i.postimg.cc/nLGHrJTt/IMG-3002.jpg" alt="Massage Therapist">
+    <div class="contact-buttons">
+      <button class="btn">📞</button>
+      <button class="btn">Telegram</button>
     </div>
   </div>
 
-  <!-- Лепестки -->
+  <!-- Всплывающее окно -->
+  <div id="popup">
+    <h3>🌸 אחריות וגבולות מקצועיים</h3>
+    <p>מה אני מציעה: העבודה שלי נועדה ליצור מרחב בטוח, מכבד ותומך לטיפול גופני ואנרגטי. אני מציעה טיפול מגע, איזון אנרגטי, טקסים של אהבה עצמית, פרקטיקות מקודשות.</p>
+    <p>🌿 איני מספקת שירותים אינטימיים.</p>
+    <h4>⸻ אחריות המטופל/ת:</h4>
+    <ul>
+      <li>להגיע בגוף נקי ובמצב רגשי מאוזן</li>
+      <li>בלי ציפייה לאינטראקציה מינית</li>
+    </ul>
+    <p>שומרת לעצמי את הזכות להפסיק מפגש בכל זמן.</p>
+    <h4>⸻ סודיות וביטחון:</h4>
+    <ul>
+      <li>שיח בטוח וסודי</li>
+      <li>אפשרות לסיים מפגש בכל שלב</li>
+    </ul>
+    <h4>⸻ ביטול ותשלום:</h4>
+    <p>ביטול עד 24 שעות מראש. אחרת — תשלום מלא.</p>
+    <button id="closePopup" onclick="document.getElementById('popup').style.display='none'">סגור</button>
+  </div>
+
+  <!-- Скрипт лепестков -->
   <script>
-    for (let i = 0; i < 20; i++) {
+    for (let i = 0; i < 15; i++) {
       let petal = document.createElement("img");
       petal.src = "https://i.postimg.cc/cHm5k97s/List-png.png";
       petal.className = "petal";
@@ -173,14 +184,7 @@
       petal.style.animationDelay = Math.random() * 10 + "s";
       document.body.appendChild(petal);
     }
-
-    function openPopup() {
-      document.getElementById('popup').style.display = 'flex';
-    }
-
-    function closePopup() {
-      document.getElementById('popup').style.display = 'none';
-    }
   </script>
+
 </body>
 </html>
