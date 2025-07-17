@@ -41,6 +41,13 @@
       width: 300px;
       max-width: 90%;
       margin-bottom: 15px;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .photo:hover {
+      opacity: 0.9;
+      transform: scale(1.02);
     }
 
     .contact-buttons {
@@ -60,6 +67,7 @@
       font-size: 15px;
       backdrop-filter: blur(4px);
       transition: 0.3s ease;
+      text-decoration: none;
     }
 
     .btn:hover {
@@ -144,7 +152,9 @@
   <button class="btn agreement-btn" onclick="document.getElementById('popup').style.display='flex'">הסכם</button>
 
   <div class="contact-section">
-    <img class="photo" src="https://i.postimg.cc/BtmnZy0G/image.png" alt="מעסה" />
+    <a href="therapy.html">
+      <img class="photo" src="https://i.postimg.cc/BtmnZy0G/image.png" alt="מעסה" />
+    </a>
     <div class="contact-buttons">
       <a class="btn" href="tel:+972548330999">📞</a>
       <a class="btn" href="https://t.me/Aumatherapy" target="_blank">Telegram</a>
