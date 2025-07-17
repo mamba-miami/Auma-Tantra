@@ -40,8 +40,6 @@
     .photo {
       width: 300px;
       max-width: 90%;
-      border: 2px solid gold;
-      border-radius: 12px;
       margin-bottom: 15px;
     }
 
@@ -81,21 +79,30 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(255, 255, 255, 0.95);
-      color: #000;
+      background: rgba(255, 255, 255, 0.1);
       display: none;
       justify-content: center;
       align-items: center;
       z-index: 999;
-      padding: 20px;
-      text-align: right;
-      overflow-y: auto;
+      backdrop-filter: blur(4px);
     }
 
-    .popup-content {
+    .popup-card {
+      background: white;
+      border: 1px solid gold;
+      border-radius: 12px;
+      padding: 20px 25px;
       max-width: 600px;
-      line-height: 1.6;
+      width: 90%;
+      box-shadow: 0 0 25px rgba(0,0,0,0.2);
+      text-align: right;
       direction: rtl;
+      color: #000;
+    }
+
+    .popup-content h3 {
+      margin-top: 0;
+      color: #444;
     }
 
     .close-btn {
@@ -103,10 +110,15 @@
       display: inline-block;
       background-color: transparent;
       border: 1px solid gold;
-      color: black;
+      color: #444;
       padding: 8px 14px;
       border-radius: 6px;
       cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .close-btn:hover {
+      box-shadow: 0 0 10px gold;
     }
 
     @keyframes fall {
@@ -132,7 +144,7 @@
   <button class="btn agreement-btn" onclick="document.getElementById('popup').style.display='flex'">הסכם</button>
 
   <div class="contact-section">
-    <img class="photo" src="https://i.postimg.cc/nLGHrJTt/IMG-3002.jpg" alt="מעסה" />
+    <img class="photo" src="https://i.postimg.cc/BtmnZy0G/image.png" alt="מעסה" />
     <div class="contact-buttons">
       <a class="btn" href="tel:+972548330999">📞</a>
       <a class="btn" href="https://t.me/Aumatherapy" target="_blank">Telegram</a>
@@ -141,34 +153,36 @@
   </div>
 
   <div id="popup" class="popup">
-    <div class="popup-content">
-      <h3>🌸 אחריות וגבולות מקצועיים</h3>
-      העבודה שלי נועדה ליצור מרחב בטוח, מכבד ותומך לטיפול גופני ואנרגטי.  
-      אני מציעה:  
-      – טיפול מגע ועיסוי  
-      – איזון אנרגטי  
-      – טקסים של אהבה עצמית ומגע מודע  
-      – פרקטיקות מקודשות בהשראת מסורות עתיקות  
-      🌿 איני מספקת שירותים אינטימיים.  
-      <br><br>
-      <strong>אחריות המטופל/ת:</strong><br>
-      אנא הגיעו מתוך כבוד לעצמכם ולי, בגוף נקי ובמצב רגשי מאוזן, בהבנה שהמפגש אינו כולל אינטראקציה מינית.  
-      אני שומרת לעצמי את הזכות להפסיק את המפגש אם יופר הגבול המקצועי שלי.  
-      <br><br>
-      <strong>הגבולות שלי:</strong><br>
-      – איני מספקת שירותים אינטימיים  
-      – אין עירום, למעט במקרים בהם הדבר רלוונטי, בטוח ומוסכם מראש  
-      – כל מגע מתרחש אך ורק בתוך גבולות טיפוליים ברורים ומוסכמים  
-      <br><br>
-      <strong>סודיות וביטחון:</strong><br>
-      – כל מה שקורה במפגש נשאר בינינו  
-      – ניתן להפסיק את המפגש בכל שלב אם מתעורר חוסר נוחות  
-      – אני פועלת באווירה של כבוד, רוך ורגישות לצרכים שלכם  
-      <br><br>
-      <strong>ביטול ותשלום:</strong><br>
-      ניתן לבטל או לדחות מפגש עד 24 שעות מראש. ביטול מאוחר יותר יחויב בתשלום מלא.  
-      <br><br>
-      <button class="close-btn" onclick="document.getElementById('popup').style.display='none'">סגור</button>
+    <div class="popup-card">
+      <div class="popup-content">
+        <h3>🌸 אחריות וגבולות מקצועיים</h3>
+        העבודה שלי נועדה ליצור מרחב בטוח, מכבד ותומך לטיפול גופני ואנרגטי.<br>
+        אני מציעה:<br>
+        – טיפול מגע ועיסוי<br>
+        – איזון אנרגטי<br>
+        – טקסים של אהבה עצמית ומגע מודע<br>
+        – פרקטיקות מקודשות בהשראת מסורות עתיקות<br>
+        🌿 איני מספקת שירותים אינטימיים.<br><br>
+
+        <strong>אחריות המטופל/ת:</strong><br>
+        אנא הגיעו מתוך כבוד לעצמכם ולי, בגוף נקי ובמצב רגשי מאוזן, בהבנה שהמפגש אינו כולל אינטראקציה מינית.<br>
+        אני שומרת לעצמי את הזכות להפסיק את המפגש אם יופר הגבול המקצועי שלי.<br><br>
+
+        <strong>הגבולות שלי:</strong><br>
+        – איני מספקת שירותים אינטימיים<br>
+        – אין עירום, למעט במקרים בהם הדבר רלוונטי, בטוח ומוסכם מראש<br>
+        – כל מגע מתרחש אך ורק בתוך גבולות טיפוליים ברורים ומוסכמים<br><br>
+
+        <strong>סודיות וביטחון:</strong><br>
+        – כל מה שקורה במפגש נשאר בינינו<br>
+        – ניתן להפסיק את המפגש בכל שלב אם מתעורר חוסר נוחות<br>
+        – אני פועלת באווירה של כבוד, רוך ורגישות לצרכים שלכם<br><br>
+
+        <strong>ביטול ותשלום:</strong><br>
+        ניתן לבטל או לדחות מפגש עד 24 שעות מראש. ביטול מאוחר יותר יחויב בתשלום מלא.<br><br>
+
+        <button class="close-btn" onclick="document.getElementById('popup').style.display='none'">סגור</button>
+      </div>
     </div>
   </div>
 
