@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="he">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>על הטיפול</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AUMA Massage</title>
   <style>
     body {
       margin: 0;
@@ -13,92 +13,200 @@
       background-position: center;
       background-repeat: no-repeat;
       font-family: Georgia, serif;
-      color: white;
-      text-align: right;
-      direction: rtl;
-      padding: 40px 20px;
+      height: 100vh;
+      overflow-x: hidden;
     }
 
-    .content {
-      background-color: rgba(0, 0, 0, 0.5);
-      border-radius: 12px;
-      padding: 25px;
-      max-width: 800px;
-      margin: auto;
-      box-shadow: 0 0 20px rgba(0,0,0,0.4);
+    .logo {
+      width: 220px;
+      margin: 30px auto 10px;
+      display: block;
+      animation: float 6s ease-in-out infinite;
     }
 
-    h1 {
-      color: gold;
-      text-align: center;
-      margin-bottom: 30px;
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
     }
 
-    p {
-      line-height: 1.8;
-      font-size: 18px;
-    }
-
-    .btn-container {
-      margin-top: 30px;
+    .contact-section {
       display: flex;
       flex-direction: column;
-      gap: 12px;
       align-items: center;
+      margin-top: 20px;
     }
 
-    .btn {
-      padding: 10px 20px;
-      background-color: transparent;
-      color: white;
-      border: 1px solid gold;
-      border-radius: 8px;
-      text-decoration: none;
-      font-size: 16px;
+    .photo {
+      width: 300px;
+      max-width: 90%;
+      margin-bottom: 15px;
+      cursor: pointer;
       transition: 0.3s ease;
     }
 
-    .btn:hover {
-      box-shadow: 0 0 10px gold;
+    .photo:hover {
+      opacity: 0.9;
+      transform: scale(1.02);
+    }
+
+    .contact-buttons {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn {
+      padding: 10px 18px;
       background-color: rgba(255, 255, 255, 0.1);
+      border: 1px solid gold;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 15px;
+      backdrop-filter: blur(4px);
+      transition: 0.3s ease;
+      text-decoration: none;
+    }
+
+    .btn:hover {
+      box-shadow: 0 0 8px gold;
+    }
+
+    .agreement-btn {
+      margin: 20px auto 0;
+      display: block;
+      font-size: 14px;
+      padding: 6px 12px;
+    }
+
+    .popup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.1);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+      backdrop-filter: blur(4px);
+    }
+
+    .popup-card {
+      background: white;
+      border: 1px solid gold;
+      border-radius: 12px;
+      padding: 20px 25px;
+      max-width: 600px;
+      width: 90%;
+      box-shadow: 0 0 25px rgba(0,0,0,0.2);
+      text-align: right;
+      direction: rtl;
+      color: #000;
+    }
+
+    .popup-content h3 {
+      margin-top: 0;
+      color: #444;
+    }
+
+    .close-btn {
+      margin-top: 20px;
+      display: inline-block;
+      background-color: transparent;
+      border: 1px solid gold;
+      color: #444;
+      padding: 8px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .close-btn:hover {
+      box-shadow: 0 0 10px gold;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(-100px) rotate(0deg); opacity: 0; }
+      10% { opacity: 1; }
+      100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+    }
+
+    .petal {
+      position: fixed;
+      top: -50px;
+      width: 30px;
+      pointer-events: none;
+      z-index: 0;
+      animation: fall linear infinite;
     }
   </style>
 </head>
 <body>
-  <div class="content">
-    <h1>🌸 מהי טנטרה וכיצד אני עובדת</h1>
-    <p>
-      טנטרה היא דרך של התעוררות דרך הגוף, הנשימה, תשומת הלב והנוכחות.<br>
-      זוהי חכמה עתיקה על חיבור בין אנרגיה לתודעה, על אהבה לעצמנו ולחיים.<br>
-      בפרקטיקה שלי, טנטרה אינה עוסקת במיניות לשם עצמה — אלא בחזרה לרגישות הטבעית, לחופש, לאור הפנימי ולחכמת הגוף.
-    </p>
-    <p>
-      אני יוצרת מרחב בטוח ועדין לטרנספורמציה עמוקה, שבו כל אדם יכול לגעת במהות שלו.
-    </p>
-    <p>
-      🌿 מה אני מציעה:<br>
-      – מפגשים טנטריים אישיים<br>
-      – מדיטציות ותרגולי נשימה מודעת<br>
-      – טקסים של חיבור מחודש לגוף וללב<br>
-      – היפנוזה רגרסיבית ועבודה עם תת-המודע<br>
-      – תרגולי נשימה (כגון ריבירת’ינג, פראניאמה ועוד)<br>
-      – עיסוי טיפולי: שיאצו, עיסוי אנרגטי ומרגיע<br>
-      – טכניקות עתיקות מהודו ומזרח אסיה לעירור האנרגיה הפנימית
-    </p>
-    <p>
-      ✨ אני מטפלת מוסמכת בעלת ניסיון של למעלה מ־12 שנה בפרקטיקה טנטרית.<br>
-      הידע שלי מבוסס על פסיכולוגיה מערבית בשילוב מסורות מזרחיות. למדתי אצל מורים מהודו, ישראל ואירופה.
-    </p>
-    <p>
-      בכל מפגש אני מלווה אותך ברגישות, אהבה וכבוד — בדרך לריפוי, לשחרור פנימי ולהתעוררות של אנרגיית החיים.
-    </p>
 
-    <div class="btn-container">
-      <a class="btn" href="index.html">🔙 חזרה לדף הבית</a>
-      <a class="btn" href="https://www.instagram.com/tantra_terra/" target="_blank">Instagram</a>
-      <a class="btn" href="tel:+972548330999">📞 התקשרי עכשיו</a>
+  <img src="https://i.postimg.cc/x1n5hyC8/7-C34-E01-D-B9-C2-4-A49-8-DA8-AA9-E5-F559-FC0.png" alt="Auma Massage" class="logo">
+
+  <button class="btn agreement-btn" onclick="document.getElementById('popup').style.display='flex'">הסכם</button>
+
+  <div class="contact-section">
+    <a href="therapy.html">
+      <img class="photo" src="https://i.postimg.cc/BtmnZy0G/image.png" alt="מעסה" />
+    </a>
+    <div class="contact-buttons">
+      <a class="btn" href="tel:+972548330999">📞</a>
       <a class="btn" href="https://t.me/Aumatherapy" target="_blank">Telegram</a>
+      <a class="btn" href="https://www.instagram.com/tantra_terra/" target="_blank">Instagram</a>
     </div>
   </div>
+
+  <div id="popup" class="popup">
+    <div class="popup-card">
+      <div class="popup-content">
+        <h3>🌸 אחריות וגבולות מקצועיים</h3>
+        העבודה שלי נועדה ליצור מרחב בטוח, מכבד ותומך לטיפול גופני ואנרגטי.<br>
+        אני מציעה:<br>
+        – טיפול מגע ועיסוי<br>
+        – איזון אנרגטי<br>
+        – טקסים של אהבה עצמית ומגע מודע<br>
+        – פרקטיקות מקודשות בהשראת מסורות עתיקות<br>
+        🌿 איני מספקת שירותים אינטימיים.<br><br>
+
+        <strong>אחריות המטופל/ת:</strong><br>
+        אנא הגיעו מתוך כבוד לעצמכם ולי, בגוף נקי ובמצב רגשי מאוזן, בהבנה שהמפגש אינו כולל אינטראקציה מינית.<br>
+        אני שומרת לעצמי את הזכות להפסיק את המפגש אם יופר הגבול המקצועי שלי.<br><br>
+
+        <strong>הגבולות שלי:</strong><br>
+        – איני מספקת שירותים אינטימיים<br>
+        – אין עירום, למעט במקרים בהם הדבר רלוונטי, בטוח ומוסכם מראש<br>
+        – כל מגע מתרחש אך ורק בתוך גבולות טיפוליים ברורים ומוסכמים<br><br>
+
+        <strong>סודיות וביטחון:</strong><br>
+        – כל מה שקורה במפגש נשאר בינינו<br>
+        – ניתן להפסיק את המפגש בכל שלב אם מתעורר חוסר נוחות<br>
+        – אני פועלת באווירה של כבוד, רוך ורגישות לצרכים שלכם<br><br>
+
+        <strong>ביטול ותשלום:</strong><br>
+        ניתן לבטל או לדחות מפגש עד 24 שעות מראש. ביטול מאוחר יותר יחויב בתשלום מלא.<br><br>
+
+        <button class="close-btn" onclick="document.getElementById('popup').style.display='none'">סגור</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    for (let i = 0; i < 15; i++) {
+      const petal = document.createElement("img");
+      petal.src = "https://i.postimg.cc/cHm5k97s/List-png.png";
+      petal.className = "petal";
+      petal.style.left = Math.random() * 100 + "vw";
+      petal.style.animationDuration = (5 + Math.random() * 10) + "s";
+      petal.style.animationDelay = Math.random() * 10 + "s";
+      document.body.appendChild(petal);
+    }
+  </script>
+
 </body>
 </html>
