@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="he">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AUMA Massage</title>
   <style>
     body {
@@ -16,23 +16,19 @@
       height: 100vh;
       overflow-x: hidden;
       direction: rtl;
+      text-align: center;
     }
 
     .logo {
-      display: block;
+      width: 220px;
       margin: 40px auto 20px;
-      width: 200px;
-      max-width: 90%;
+      display: block;
       animation: float 6s ease-in-out infinite;
     }
 
     @keyframes float {
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-10px); }
-    }
-
-    .buttons {
-      text-align: center;
     }
 
     .btn {
@@ -53,6 +49,18 @@
       color: white;
     }
 
+    .agreement-btn {
+      display: inline-block;
+      margin-top: 10px;
+      font-size: 14px;
+      background-color: transparent;
+      border: 1px solid #c5a75d;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      color: #c5a75d;
+    }
+
     .popup {
       position: fixed;
       top: 0;
@@ -60,7 +68,7 @@
       width: 100%;
       height: 100%;
       background-color: rgba(0,0,0,0.5);
-      display: flex;
+      display: none;
       align-items: center;
       justify-content: center;
       z-index: 9999;
@@ -73,28 +81,20 @@
       max-width: 700px;
       width: 90%;
       color: #3c2e2e;
-      overflow-y: auto;
       text-align: right;
-    }
-
-    .popup-content h2 {
-      color: #8c4f3d;
-      font-size: 24px;
-    }
-
-    .popup-content ul {
-      padding-right: 20px;
+      direction: rtl;
+      overflow-y: auto;
+      max-height: 90vh;
     }
 
     .popup-content button {
       margin-top: 20px;
-      padding: 12px 24px;
+      padding: 10px 20px;
       background: transparent;
       border: 1px solid #c5a75d;
       color: #c5a75d;
       border-radius: 6px;
       cursor: pointer;
-      font-size: 16px;
       transition: all 0.3s ease;
     }
 
@@ -103,10 +103,11 @@
       color: white;
     }
 
-    @keyframes fall {
-      0% { transform: translateY(-100px) rotate(0deg); opacity: 0; }
-      10% { opacity: 1; }
-      100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+    .footer {
+      margin-top: 40px;
+      padding: 20px;
+      font-size: 16px;
+      color: #c5a75d;
     }
 
     .petal {
@@ -117,26 +118,38 @@
       z-index: 0;
       animation: fall linear infinite;
     }
+
+    @keyframes fall {
+      0% { transform: translateY(-100px) rotate(0deg); opacity: 0; }
+      10% { opacity: 1; }
+      100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+    }
   </style>
 </head>
 <body>
 
-  <!-- Логотип -->
-  <img src="https://i.postimg.cc/QMNvyYpc/5283-E48-B-15-F9-40-C3-B9-A9-0090049-C0298.png" alt="AUMA Logo" class="logo">
+  <!-- Верхний логотип -->
+  <img src="https://i.postimg.cc/x1n5hyC8/7-C34-E01-D-B9-C2-4-A49-8-DA8-AA9-E5-F559-FC0.png" alt="Auma Logo" class="logo">
+
+  <!-- Кнопка соглашения -->
+  <button class="agreement-btn" onclick="document.getElementById('popup').style.display='flex'">הסכם</button>
 
   <!-- Кнопки -->
-  <div class="buttons">
+  <div>
     <a href="https://t.me/ТВОЙ_ЮЗЕРНЕЙМ" class="btn" target="_blank">BOOK A SESSION</a>
     <a href="tel:+972548330999" class="btn">CALL</a>
+  </div>
 
-    <!-- Изображение-ссылка на вторую страницу -->
-    <a href="info.html">
-      <img src="https://i.postimg.cc/QMNvyYpc/5283-E48-B-15-F9-40-C3-B9-A9-0090049-C0298.png" 
-           alt="Подробнее" 
-           style="display:block; margin:40px auto 20px; width:220px; max-width:90%; cursor:pointer; transition: 0.3s ease;"
-           onmouseover="this.style.opacity=0.9"
-           onmouseout="this.style.opacity=1">
-    </a>
+  <!-- Изображение-переход на info.html -->
+  <a href="info.html">
+    <img src="https://i.postimg.cc/QMNvyYpc/5283-E48-B-15-F9-40-C3-B9-A9-0090049-C0298.png"
+         alt="Подробнее"
+         style="display:block; margin:40px auto 20px; width:220px; max-width:90%; cursor:pointer;">
+  </a>
+
+  <!-- Подвал -->
+  <div class="footer">
+    Для сотрудничества: <a href="tel:+972548330999" style="color: #c5a75d; text-decoration: none;">+972 54-8330999</a>
   </div>
 
   <!-- Popup-соглашение -->
@@ -150,9 +163,6 @@
       – טקסים של אהבה עצמית ומגע מודע<br>
       – פרקטיקות מקודשות מהודו ומזרח אסיה</p>
       <p><strong>🌿 איני מספקת שירותים אינטימיים.</strong></p>
-      <h3>אחריות המטופל/ת:</h3>
-      <p>אנא הגיעו מתוך כבוד לעצמכם ולי, בגוף נקי ובמצב רגשי מאוזן. המפגש אינו כולל אינטראקציה מינית.</p>
-      <p>אני שומרת לעצמי את הזכות להפסיק את המפגש אם יופר הגבול המקצועי שלי.</p>
       <h3>הגבולות שלי:</h3>
       <ul>
         <li>אין שירותים אינטימיים</li>
