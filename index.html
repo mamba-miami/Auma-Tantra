@@ -2,44 +2,74 @@
 <html lang="he">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>AUMA Massage</title>
   <style>
     body {
       margin: 0;
       padding: 0;
-      background-image: url('https://i.ibb.co/jPnScd84/IMG-2848.jpg');
+      background-image: url('https://i.postimg.cc/sDn9snSV/F41-EE23-A-3-CEC-476-B-B4-B1-8-A3-E1-F15-E213.png');
       background-size: cover;
       background-position: center;
-      background-repeat: no-repeat;
-      font-family: Georgia, serif;
-      height: 100vh;
-      overflow-x: hidden;
+      font-family: 'Helvetica Neue', Georgia, serif;
+      color: #f5f5f5;
+      direction: rtl;
     }
 
     .logo {
-      width: 220px;
-      margin: 30px auto 10px;
       display: block;
+      margin: 30px auto 10px;
+      width: 220px;
       animation: float 6s ease-in-out infinite;
     }
 
     @keyframes float {
-      0%, 100% { transform: translateY(0px); }
+      0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-10px); }
     }
 
-    .contact-section {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+    .btn-image {
+      display: inline-block;
+      text-align: center;
+    }
+
+    .btn-image img {
+      width: 180px;
+      max-width: 80%;
+      margin: 30px auto;
+      display: block;
+    }
+
+    .button-auma-minimal {
+      display: inline-block;
+      padding: 14px 28px;
+      border: 1px solid #c5a75d;
+      border-radius: 6px;
+      color: #c5a75d;
+      background-color: transparent;
+      font-size: 17px;
+      font-family: 'Helvetica Neue', sans-serif;
+      text-decoration: none;
+      letter-spacing: 1px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      margin: 10px;
+    }
+
+    .button-auma-minimal:hover {
+      background-color: #c5a75d;
+      color: white;
+    }
+
+    .contact-buttons {
+      text-align: center;
       margin-top: 20px;
     }
 
     .photo {
-      width: 300px;
-      max-width: 90%;
-      margin-bottom: 15px;
+      display: block;
+      margin: 20px auto;
+      max-width: 300px;
+      width: 90%;
       cursor: pointer;
       transition: 0.3s ease;
     }
@@ -49,35 +79,11 @@
       transform: scale(1.02);
     }
 
-    .contact-buttons {
-      display: flex;
-      gap: 15px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .btn {
-      padding: 10px 18px;
-      background-color: rgba(255, 255, 255, 0.1);
-      border: 1px solid gold;
-      color: white;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 15px;
-      backdrop-filter: blur(4px);
-      transition: 0.3s ease;
-      text-decoration: none;
-    }
-
-    .btn:hover {
-      box-shadow: 0 0 8px gold;
-    }
-
-    .agreement-btn {
-      margin: 20px auto 0;
-      display: block;
-      font-size: 14px;
-      padding: 6px 12px;
+    .footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 16px;
+      color: #c5a75d;
     }
 
     .popup {
@@ -86,130 +92,90 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(255, 255, 255, 0.1);
+      background-color: rgba(0,0,0,0.8);
       display: none;
-      justify-content: center;
       align-items: center;
-      z-index: 999;
-      backdrop-filter: blur(4px);
+      justify-content: center;
+      z-index: 9999;
     }
 
-    .popup-card {
-      background: #fff;
-      border: 1px solid gold;
+    .popup-content {
+      background-color: #fff7f0;
+      padding: 30px;
       border-radius: 12px;
-      padding: 25px 30px;
-      max-width: 400px; /* узкая форма */
-      width: 90%;
-      max-height: 80vh;
-      overflow-y: auto;
-      box-shadow: 0 0 25px rgba(0,0,0,0.2);
+      max-width: 700px;
+      color: #3c2e2e;
+      font-family: sans-serif;
       text-align: right;
-      direction: rtl;
-      color: #000;
-    }
-
-    .popup-content h3 {
-      margin-top: 0;
-      color: #333;
-    }
-
-    .close-btn {
-      margin-top: 20px;
-      display: inline-block;
-      background-color: transparent;
-      border: 1px solid gold;
-      color: #444;
-      padding: 8px 14px;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: 0.3s ease;
-    }
-
-    .close-btn:hover {
-      background-color: #f5f5f5;
-      box-shadow: 0 0 8px gold;
-    }
-
-    @keyframes fall {
-      0% { transform: translateY(-100px) rotate(0deg); opacity: 0; }
-      10% { opacity: 1; }
-      100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
-    }
-
-    .petal {
-      position: fixed;
-      top: -50px;
-      width: 30px;
-      pointer-events: none;
-      z-index: 0;
-      animation: fall linear infinite;
+      overflow-y: auto;
     }
   </style>
 </head>
 <body>
 
-  <img src="https://i.postimg.cc/x1n5hyC8/7-C34-E01-D-B9-C2-4-A49-8-DA8-AA9-E5-F559-FC0.png" alt="Auma Massage" class="logo">
+  <img src="https://i.postimg.cc/x1n5hyC8/7-C34-E01-D-B9-C2-4-A49-8-DA8-AA9-E5-F559-FC0.png" alt="AUMA Logo" class="logo">
 
-  <button class="btn agreement-btn" onclick="document.getElementById('popup').style.display='flex'">הסכם</button>
-
-  <div class="contact-section">
+  <div class="btn-image">
     <a href="info.html">
-      <img class="photo" src="https://i.postimg.cc/BtmnZy0G/image.png" alt="מעסה" />
+      <img src="https://i.postimg.cc/QMNvyYpc/5283-E48-B-15-F9-40-C3-B9-A9-0090049-C0298.png" alt="Our Services">
     </a>
-    <div class="contact-buttons">
-      <a class="btn" href="tel:+972548330999">📞</a>
-      <a class="btn" href="https://t.me/Aumatherapy" target="_blank">Telegram</a>
-      <a class="btn" href="https://www.instagram.com/tantra_terra/" target="_blank">Instagram</a>
-    </div>
   </div>
 
+  <div class="contact-buttons">
+    <a href="https://t.me/Aumatherapy" target="_blank" class="button-auma-minimal">BOOK A SESSION</a>
+    <a href="tel:+972548330999" class="button-auma-minimal">CALL</a>
+  </div>
+
+  <a href="info.html">
+    <img src="https://i.postimg.cc/BtmnZy0G/image.png" alt="מעסה" class="photo" />
+  </a>
+
+  <div class="footer">
+    Для сотрудничества: <a href="tel:+972548330999" style="color: #c5a75d; text-decoration: none;">+972 54-8330999</a>
+  </div>
+
+  <button class="button-auma-minimal" style="display:block; margin: 0 auto;" onclick="document.getElementById('popup').style.display='flex'">הסכם</button>
+
   <div id="popup" class="popup">
-    <div class="popup-card">
-      <div class="popup-content">
-        <h3>🌸 אחריות וגבולות מקצועיים</h3>
-        העבודה שלי נועדה ליצור מרחב בטוח, מכבד ותומך לטיפול גופני ואנרגטי.<br>
-        אני מציעה:<br>
-        – טיפול מגע ועיסוי<br>
-        – איזון אנרגטי<br>
-        – טקסים של אהבה עצמית ומגע מודע<br>
-        – פרקטיקות מקודשות בהשראת מסורות עתיקות<br><br>
+    <div class="popup-content">
+      <h2 style="color: #8c4f3d;">🌸 אחריות וגבולות מקצועיים – טנטרה בחיפה</h2>
+      <p>העבודה שלי ב-AUMA טנטרה בחיפה נועדה ליצור מרחב טיפולי עדין, בטוח ומכבד לטיפול גופני ואנרגטי.</p>
+      <p><strong>אני מציעה:</strong><br>
+      – טיפול מגע ועיסוי טנטרי בחיפה<br>
+      – איזון אנרגטי לנשים ולגברים<br>
+      – טקסים של אהבה עצמית ומגע מודע<br>
+      – פרקטיקות מקודשות מהודו ומזרח אסיה</p>
+      <p><strong>🌿 איני מספקת שירותים אינטימיים.</strong></p>
 
-        🌿 איני מספקת שירותים אינטימיים.<br><br>
+      <h3 style="color: #a85c4b;">אחריות המטופל/ת:</h3>
+      <p>אנא הגיעו מתוך כבוד לעצמכם ולי, בגוף נקי ובמצב רגשי מאוזן. המפגש אינו כולל אינטראקציה מינית.<br>
+      אני שומרת לעצמי את הזכות להפסיק את המפגש אם יופר הגבול המקצועי שלי.</p>
 
-        <strong>אחריות המטופל/ת:</strong><br>
-        אנא הגיעו מתוך כבוד לעצמכם ולי, בגוף נקי ובמצב רגשי מאוזן, בהבנה שהמפגש אינו כולל אינטראקציה מינית.<br>
-        אני שומרת לעצמי את הזכות להפסיק את המפגש אם יופר הגבול המקצועי שלי.<br><br>
+      <h3 style="color: #a85c4b;">הגבולות שלי:</h3>
+      <ul>
+        <li>אין שירותים אינטימיים</li>
+        <li>אין עירום, למעט בהסכמה מראש ובאופן טיפולי</li>
+        <li>כל מגע מתקיים בתוך גבולות טיפוליים ברורים</li>
+        <li><strong>הטיפול אינו מתאים לאנשים הסובלים ממחלות אונקולוגיות (סרטן), קרישיות יתר או טרומבוזה</strong></li>
+      </ul>
 
-        <strong>הגבולות שלי:</strong><br>
-        – איני מספקת שירותים אינטימיים<br>
-        – אין עירום, למעט במקרים בהם הדבר רלוונטי, בטוח ומוסכם מראש<br>
-        – כל מגע מתרחש אך ורק בתוך גבולות טיפוליים ברורים ומוסכמים<br><br>
+      <h3 style="color: #a85c4b;">סודיות וביטחון:</h3>
+      <ul>
+        <li>הכול נשמר בסודיות מוחלטת</li>
+        <li>ניתן להפסיק את המפגש בכל שלב</li>
+        <li>המפגש מתקיים באווירה של כבוד, רוך ורגישות</li>
+      </ul>
 
-        <strong>סודיות וביטחון:</strong><br>
-        – כל מה שקורה במפגש נשאר בינינו<br>
-        – ניתן להפסיק את המפגש בכל שלב אם מתעורר חוסר נוחות<br>
-        – אני פועלת באווירה של כבוד, רוך ורגישות לצרכים שלכם<br><br>
+      <h3 style="color: #a85c4b;">ביטול ותשלום:</h3>
+      <p>ניתן לבטל או לדחות מפגש עד 24 שעות מראש. ביטול מאוחר יותר יחויב בתשלום מלא.</p>
 
-        <strong>ביטול ותשלום:</strong><br>
-        ניתן לבטל או לדחות מפגש עד 24 שעות מראש. ביטול מאוחר יותר יחויב בתשלום מלא.<br><br>
-
-        <button class="close-btn" onclick="document.getElementById('popup').style.display='none'">סגור</button>
+      <div style="text-align: center; margin-top: 20px;">
+        <button onclick="document.getElementById('popup').style.display='none'" class="button-auma-minimal">
+          ✧ קראתי והבנתי ✧
+        </button>
       </div>
     </div>
   </div>
-
-  <script>
-    for (let i = 0; i < 15; i++) {
-      const petal = document.createElement("img");
-      petal.src = "https://i.postimg.cc/cHm5k97s/List-png.png";
-      petal.className = "petal";
-      petal.style.left = Math.random() * 100 + "vw";
-      petal.style.animationDuration = (5 + Math.random() * 10) + "s";
-      petal.style.animationDelay = Math.random() * 10 + "s";
-      document.body.appendChild(petal);
-    }
-  </script>
 
 </body>
 </html>
