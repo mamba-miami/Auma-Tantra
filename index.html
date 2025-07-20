@@ -2,143 +2,109 @@
 <html lang="he">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AUMA.life | עיסוי וטנטרה בחיפה</title>
   <meta name="description" content="AUMA.life - פורטל עיסוי וטנטרה בחיפה. מצאו מטפלים מוסמכים, עיסוי מפנק, איזון אנרגטי וטיפול הוליסטי.">
   <style>
     body {
       margin: 0;
       padding: 0;
-      font-family: 'Georgia', serif;
-      background: url('https://i.postimg.cc/6px8nnCk/0-CB28-C10-4530-4-DF6-897-A-25-F7-A9-DB1-BE5.png') no-repeat center center fixed;
+      background-image: url('https://i.postimg.cc/6px8nnCk/0-CB28-C10-4530-4-DF6-897-A-25-F7-A9-DB1-BE5.png');
       background-size: cover;
+      background-position: center;
+      font-family: Georgia, serif;
       color: #3c2e2e;
       direction: rtl;
-    }
-
-    .top-bar {
-      display: flex;
-      justify-content: space-between;
-      padding: 10px 20px;
-      position: absolute;
-      top: 0;
-      width: 100%;
-    }
-
-    .top-bar .btn-top {
-      font-size: 14px;
-      background: transparent;
-      border: 1px solid #c5a75d;
-      border-radius: 6px;
-      padding: 6px 12px;
-      color: #c5a75d;
-      cursor: pointer;
-    }
-
-    .logo-center {
       text-align: center;
-      margin-top: 80px;
+    }
+
+    .logo {
+      width: 200px;
+      margin: 30px auto;
+      display: block;
       animation: float 6s ease-in-out infinite;
     }
 
-    .logo-center img {
-      width: 220px;
-    }
-
     @keyframes float {
-      0%, 100% { transform: translateY(0px); }
+      0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-10px); }
     }
 
-    .therapist {
-      text-align: center;
-      margin: 40px 20px;
+    .top-buttons {
+      display: flex;
+      justify-content: space-between;
+      padding: 15px 25px;
+      position: absolute;
+      top: 0;
+      width: 100%;
+      box-sizing: border-box;
     }
 
-    .therapist img.photo {
+    .top-buttons .btn {
+      padding: 6px 12px;
+      font-size: 14px;
+      border: 1px solid #c5a75d;
+      background-color: transparent;
+      color: #c5a75d;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .therapist {
+      margin: 50px auto;
+      max-width: 300px;
+    }
+
+    .therapist-logo {
+      width: 100px;
+      margin-bottom: 10px;
+    }
+
+    .therapist-photo {
       width: 200px;
       height: 200px;
-      object-fit: cover;
       border-radius: 10px;
+      object-fit: cover;
       border: 4px solid white;
     }
 
-    .therapist .caption {
-      margin: 10px 0;
+    .caption {
       font-size: 14px;
+      margin: 10px 0 15px;
     }
 
-    .btn-group {
-      margin-top: 10px;
+    .button-group {
       display: flex;
       justify-content: center;
       gap: 10px;
       flex-wrap: wrap;
     }
 
-    .btn-auma {
-      padding: 8px 16px;
+    .button-auma-minimal {
+      display: inline-block;
+      padding: 10px 16px;
       border: 1px solid #c5a75d;
       border-radius: 6px;
       color: #c5a75d;
       background-color: transparent;
       font-size: 14px;
+      font-family: 'Helvetica Neue', sans-serif;
       text-decoration: none;
+      letter-spacing: 0.5px;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
 
-    .btn-auma:hover {
+    .button-auma-minimal:hover {
       background-color: #c5a75d;
       color: white;
     }
 
     .footer {
-      text-align: center;
+      margin-top: 50px;
       padding: 20px;
       font-size: 16px;
       color: #c5a75d;
       font-family: 'Helvetica Neue', sans-serif;
-    }
-
-    .popup, .popup-about {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.8);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 999;
-    }
-
-    .popup-content {
-      background: #fff7f0;
-      padding: 25px;
-      max-width: 700px;
-      color: #3c2e2e;
-      font-family: sans-serif;
-      border-radius: 10px;
-      text-align: right;
-    }
-
-    .popup-content button {
-      margin-top: 20px;
-      border: 1px solid #c5a75d;
-      background: transparent;
-      color: #c5a75d;
-      padding: 10px 20px;
-      cursor: pointer;
-      border-radius: 5px;
-    }
-
-    .popup-content button:hover {
-      background: #c5a75d;
-      color: white;
-    }
-
-    @keyframes fall {
-      0% { transform: translateY(-100px) rotate(0deg); opacity: 0; }
-      10% { opacity: 1; }
-      100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
     }
 
     .petal {
@@ -149,83 +115,116 @@
       z-index: 0;
       animation: fall linear infinite;
     }
+
+    @keyframes fall {
+      0% { transform: translateY(-100px) rotate(0deg); opacity: 0; }
+      10% { opacity: 1; }
+      100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+    }
+
+    #popup, #aboutPopup {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      z-index: 999;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .popup-card {
+      background: #fff7f0;
+      padding: 25px;
+      max-width: 600px;
+      width: 90%;
+      color: #3c2e2e;
+      border-radius: 12px;
+      text-align: right;
+    }
+
+    .popup-card h2 {
+      color: #a85c4b;
+      font-size: 20px;
+    }
+
+    .popup-card button {
+      margin-top: 15px;
+    }
   </style>
 </head>
 <body>
 
-<div class="top-bar">
-  <button class="btn-top" onclick="document.getElementById('popup').style.display='flex'">הסכם</button>
-  <div>
-    <button class="btn-top" onclick="document.getElementById('popup-about').style.display='flex'">על האתר</button>
-    <button class="btn-top">🌐</button>
+  <div class="top-buttons">
+    <button class="btn" onclick="document.getElementById('popup').style.display='flex'">הסכם</button>
+    <div>
+      <button class="btn" onclick="document.getElementById('aboutPopup').style.display='flex'">על האתר</button>
+      <button class="btn">🌐</button>
+    </div>
   </div>
-</div>
 
-<div class="logo-center">
-  <img src="https://i.postimg.cc/QMNvyYpc/5283-E48-B-15-F9-40-C3-B9-A9-0090049-C0298.png" alt="AUMA MASSAGE">
-</div>
+  <img src="https://i.postimg.cc/x1n5hyC8/7-C34-E01-D-B9-C2-4-A49-8-DA8-AA9-E5-F559-FC0.png" alt="Auma Massage" class="logo">
 
-<div class="therapist">
-  <h2>AUMA TANTRA</h2>
-  <img class="photo" src="https://i.postimg.cc/K836D1hB/IMG-3073.jpg" alt="טיפול טנטרה לנשים ולגברים בחיפה – עיסוי טנטרה, ריפוי גוף נפש, מגע מודע">
-  <div class="caption">עיסוי טנטרה, טיפול טנטרה, טנטרה בחיפה, ריפוי גוף נפש</div>
-  <div class="btn-group">
-    <a class="btn-auma" href="tel:+972548330999">CALL</a>
-    <a class="btn-auma" href="https://t.me/Aumatherapy">BOOKING</a>
-    <a class="btn-auma" href="info.html">OUR SERVICES</a>
+  <!-- Therapist 1: AUMA TANTRA -->
+  <div class="therapist">
+    <img src="https://i.postimg.cc/zXWg91WW/7030-C80-B-CC49-4-ECF-B85-A-46-AB981-F7405.png" alt="AUMA TANTRA Logo" class="therapist-logo">
+    <img src="https://i.postimg.cc/K836D1hB/IMG-3073.jpg" alt="טיפול טנטרה לנשים ולגברים בחיפה – עיסוי טנטרה, ריפוי גוף נפש, מגע מודע" class="therapist-photo">
+    <div class="caption">עיסוי טנטרה, טיפול טנטרה, טנטרה בחיפה, ריפוי גוף נפש</div>
+    <div class="button-group">
+      <a href="tel:+972548330999" class="button-auma-minimal">CALL</a>
+      <a href="https://t.me/Aumatherapy" target="_blank" class="button-auma-minimal">BOOKING</a>
+      <a href="info.html" class="button-auma-minimal">OUR SERVICES</a>
+    </div>
   </div>
-</div>
 
-<div class="therapist">
-  <h2>NAMASTE</h2>
-  <img class="photo" src="https://i.postimg.cc/B6pRwjS8/massage-namaste.jpg" alt="טיפול טנטרה לנשים ולגברים בחיפה – עיסוי טנטרה, ריפוי גוף נפש, מגע מודע">
-  <div class="caption">עיסוי טנטרה, טיפול טנטרה, טנטרה בחיפה, ריפוי גוף נפש</div>
-  <div class="btn-group">
-    <a class="btn-auma" href="tel:+972548330999">CALL</a>
-    <a class="btn-auma" href="https://t.me/Aumatherapy">BOOKING</a>
-    <a class="btn-auma" href="info.html">OUR SERVICES</a>
+  <!-- Therapist 2: NAMASTE -->
+  <div class="therapist">
+    <img src="https://i.postimg.cc/V6YrtSHW/974-E4865-A2-A8-42-D8-9-ED6-C3-ADD2679-C10.png" alt="NAMASTE Logo" class="therapist-logo">
+    <img src="https://i.postimg.cc/QMghc0RR/IMG-3076.jpg" alt="טיפול טנטרה לנשים ולגברים בחיפה – עיסוי טנטרה, ריפוי גוף נפש, מגע מודע" class="therapist-photo">
+    <div class="caption">עיסוי טנטרה, טיפול טנטרה, טנטרה בחיפה, ריפוי גוף נפש</div>
+    <div class="button-group">
+      <a href="tel:+972548330999" class="button-auma-minimal">CALL</a>
+      <a href="https://t.me/Aumatherapy" target="_blank" class="button-auma-minimal">BOOKING</a>
+      <a href="info.html" class="button-auma-minimal">OUR SERVICES</a>
+    </div>
   </div>
-</div>
 
-<div class="footer">
-  Для сотрудничества: <a href="tel:+972548330999" style="color: #c5a75d; text-decoration: none;">+972 54-8330999</a>
-</div>
-
-<div class="popup" id="popup">
-  <div class="popup-content">
-    <h2>🌸 אחריות וגבולות מקצועיים – טנטרה בחיפה</h2>
-    <p>העבודה שלי ב-AUMA טנטרה בחיפה נועדה ליצור מרחב טיפולי עדין, בטוח ומכבד לטיפול גופני ואנרגטי.</p>
-    <p><strong>אני מציעה:</strong><br>
-    – טיפול מגע ועיסוי טנטרי בחיפה<br>
-    – איזון אנרגטי לנשים ולגברים<br>
-    – טקסים של אהבה עצמית ומגע מודע<br>
-    – פרקטיקות מקודשות מהודו ומזרח אסיה</p>
-    <p><strong>🌿 איני מספקת שירותים אינטימיים.</strong></p>
-    <button onclick="document.getElementById('popup').style.display='none'">✧ קראתי והבנתי ✧</button>
+  <div class="footer">
+    Для сотрудничества: <a href="tel:+972548330999" style="color: #c5a75d; text-decoration: none;">+972 54-8330999</a>
   </div>
-</div>
 
-<div class="popup" id="popup-about">
-  <div class="popup-content">
-    <h2>קצת על האתר – AUMA.life</h2>
-    <p>אתר AUMA.life הוא פורטל טיפולי המוקדש לריפוי, מגע מודע וטיפול הוליסטי. כאן תמצאו מידע על טנטרה, עיסוי מקצועי, קליניקות רפואה משלימה בצפון הארץ, איזון אנרגטי וטיפולים נשיים וגבריים.</p>
-    <p>הפורטל מחבר בין מטפלים מוסמכים לבין לקוחות המחפשים מרחב בטוח, מרגיע ומכבד. תמצאו כאן פרקטיקות מהמזרח, טיפול גוף-נפש, עיסוי הוליסטי, טקסים אישיים ורוחניות מעשית.</p>
-    <p>AUMA.life נוסד מתוך אהבה לגוף, לאנרגיה החיים ולאומנות הריפוי. זה המקום שבו הגוף והנפש מקבלים בית.</p>
-    <button onclick="document.getElementById('popup-about').style.display='none'">סגור</button>
+  <!-- Popup Agreement -->
+  <div id="popup">
+    <div class="popup-card">
+      <h2>🌸 אחריות וגבולות מקצועיים – טנטרה בחיפה</h2>
+      <p>העבודה שלי ב-AUMA טנטרה בחיפה נועדה ליצור מרחב טיפולי עדין, בטוח ומכבד לטיפול גופני ואנרגטי.</p>
+      <p><strong>אני מציעה:</strong><br>– טיפול מגע ועיסוי טנטרי<br>– איזון אנרגטי<br>– טקסים של אהבה עצמית ומגע מודע</p>
+      <p><strong>🌿 איני מספקת שירותים אינטימיים.</strong></p>
+      <button onclick="document.getElementById('popup').style.display='none'" class="button-auma-minimal">קראתי והבנתי</button>
+    </div>
   </div>
-</div>
 
-<script>
-  for (let i = 0; i < 15; i++) {
-    let petal = document.createElement("img");
-    petal.src = "https://i.postimg.cc/cHm5k97s/List-png.png";
-    petal.className = "petal";
-    petal.style.left = Math.random() * 100 + "vw";
-    petal.style.animationDuration = (5 + Math.random() * 10) + "s";
-    petal.style.animationDelay = Math.random() * 10 + "s";
-    document.body.appendChild(petal);
-  }
-</script>
+  <!-- Popup About -->
+  <div id="aboutPopup">
+    <div class="popup-card">
+      <h2>קצת על האתר – AUMA.life</h2>
+      <p>אתר AUMA.life הוא פורטל טיפולי המוקדש לריפוי, מגע מודע וטיפול הוליסטי...</p>
+      <button onclick="document.getElementById('aboutPopup').style.display='none'" class="button-auma-minimal">סגור</button>
+    </div>
+  </div>
+
+  <script>
+    for (let i = 0; i < 15; i++) {
+      const petal = document.createElement("img");
+      petal.src = "https://i.postimg.cc/cHm5k97s/List-png.png";
+      petal.className = "petal";
+      petal.style.left = Math.random() * 100 + "vw";
+      petal.style.animationDuration = (5 + Math.random() * 10) + "s";
+      petal.style.animationDelay = Math.random() * 10 + "s";
+      document.body.appendChild(petal);
+    }
+  </script>
 
 </body>
 </html>
