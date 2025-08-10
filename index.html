@@ -1,231 +1,152 @@
-<!DOCTYPE html>
-<html lang="he">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AUMA.life | עיסוי וטנטרה בחיפה</title>
-  <meta name="description" content="AUMA.life - פורטל עיסוי וטנטרה בחיפה. מצאו מטפלים מוסמכים, עיסוי מפנק, איזון אנרגטי וטיפול הוליסטי.">
-  <link rel="canonical" href="https://auma.life/" />
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background-image: url('https://i.postimg.cc/6px8nnCk/0-CB28-C10-4530-4-DF6-897-A-25-F7-A9-DB1-BE5.png');
-      background-size: cover;
-      background-position: center;
-      font-family: Georgia, serif;
-      color: #3c2e2e;
-      direction: rtl;
-      text-align: center;
+<!-- AUMA one-shot injector: video + buttons + popups (non-destructive) -->
+<script>
+(function(){
+  // === CONFIG ===
+  const TG = "https://t.me/Aumatherapy";
+  const YT_ID = "P2FA1aRDkIU";
+  const POSTER = "https://i.postimg.cc/YCjFd4jZ/IMG-3410.jpg";
+  const MICHAEL_TEL = { href: "tel:+972527393732", label: "+972 52-739-3732" };
+  const PANDA_TEL   = { href: "tel:+972558838894", label: "+972 55-883-8894" };
+  const MICHAEL_IMG = /michael-lapidus-logo\.png/i; // ищем по пути к лого
+  const PANDA_IMG   = /panda-logo\.(jpg|jpeg|png|webp|svg)/i;
+
+  // === STYLES (не ломают текущие) ===
+  const css = `
+/* Shorts video */
+.shorts-wrap{max-width:420px;margin:16px auto 0;padding:0 12px}
+.shorts-box{position:relative;width:100%;padding-top:177.78%;border-radius:12px;overflow:hidden;box-shadow:0 6px 20px rgba(0,0,0,.12);background:#000}
+.shorts-box iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.shorts-poster{position:absolute;inset:0;background-position:center;background-size:cover;transition:opacity .6s ease}
+.shorts-box.loaded .shorts-poster{opacity:0}
+@media(min-width:768px){.shorts-wrap{max-width:520px}}
+/* Mini popups */
+.mini-overlay{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(255,255,255,.55);z-index:9998}
+.mini-modal{max-width:420px;width:92%;background:#fff;border:1px solid rgba(197,167,70,.38);border-radius:14px;box-shadow:0 12px 28px rgba(0,0,0,0.15);color:#222}
+.mini-modal header{padding:12px 16px 0;text-align:center;font-size:18px}
+.mini-modal .content{padding:8px 16px 14px;line-height:1.65;font-size:16px}
+.mini-modal .actions{display:flex;gap:8px;justify-content:center;padding:0 16px 16px}
+.mini-btn{padding:9px 12px;border:1px solid rgba(197,167,70,.6);border-radius:10px;background:#fff;color:#6b5720;text-decoration:none}
+/* Buttons row */
+.button-group{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:8px}
+.button-auma-minimal{padding:8px 10px;border:1px solid rgba(197,167,70,.6);border-radius:10px;text-decoration:none;color:#6b5720}
+/* a11y */
+.sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+`.trim();
+  const style = document.createElement('style'); style.textContent = css; document.head.appendChild(style);
+
+  // === HELPERS ===
+  function after(refNode, node){ refNode.parentNode.insertBefore(node, refNode.nextSibling); }
+  function mk(tag, props={}, html=""){ const el=document.createElement(tag); Object.assign(el, props); if(html) el.innerHTML=html; return el; }
+
+  // === 1) ВИДЕО-БЛОК (Shorts) — вставляем под .grid/.card ===
+  (function insertVideo(){
+    if(document.getElementById('aumaShorts')) return;
+    const anchor = document.querySelector('.grid') || document.querySelector('.card') || document.body.firstElementChild || document.body;
+    const wrap = mk('section', { className:'shorts-wrap', ariaLabel:'AUMA intro video' });
+    const box  = mk('div', { className:'shorts-box' });
+    const iframe = mk('iframe', {
+      id:'aumaShorts',
+      title:'AUMA • Tantra Massage in Haifa',
+      allow:'autoplay; encrypted-media; picture-in-picture',
+      loading:'lazy'
+    });
+    iframe.setAttribute('allowfullscreen','allowfullscreen');
+    iframe.src = `https://www.youtube.com/embed/${YT_ID}?autoplay=1&mute=1&controls=1&loop=1&playlist=${YT_ID}&modestbranding=1&playsinline=1&rel=0`;
+    const poster = mk('div', { className:'shorts-poster' });
+    poster.style.backgroundImage = `url('${POSTER}')`;
+    iframe.addEventListener('load', ()=> box.classList.add('loaded'));
+    box.appendChild(iframe); box.appendChild(poster); wrap.appendChild(box);
+    const sr = mk('div', { className:'sr-only' }, 'וידאו אנכי בסגנון Reels/Shorts של AUMA: עיסוי טנטרה, עיסוי מקצועי ואהבה לעצמך.');
+    wrap.appendChild(sr);
+    after(anchor, wrap);
+  })();
+
+  // === 2) КНОПКИ И ПОПАПЫ — только для Michael и Panda (AUMA/NAMASTE не трогаем) ===
+  function ensureButtonsUnder(imgTest, tel, popupId){
+    const img = Array.from(document.images).find(im => imgTest.test(im.src));
+    if(!img) return;
+    // есть ли уже наши кнопки под этим блоком?
+    let hostBlock = img.closest('.therapist') || img.parentElement;
+    if(!hostBlock) hostBlock = img.parentElement;
+    let row = hostBlock.querySelector('.button-group');
+    if(!row){
+      row = mk('div', { className:'button-group' });
+      // вставляем сразу после картинки
+      if(img.nextSibling) hostBlock.insertBefore(row, img.nextSibling.nextSibling||img.nextSibling);
+      else hostBlock.appendChild(row);
     }
+    // очищать не будем — просто добавим, если нет
+    const existsCall    = Array.from(row.querySelectorAll('a')).some(a => /tel:/.test(a.getAttribute('href')||''));
+    const existsBooking = Array.from(row.querySelectorAll('a')).some(a => /t\.me/.test((a.getAttribute('href')||'')));
+    const existsServ    = Array.from(row.querySelectorAll('a')).some(a => (a.dataset.open||'')===popupId);
 
-    .logo {
-      width: 200px;
-      margin: 30px auto;
-      display: block;
-      animation: float 6s ease-in-out infinite;
+    if(!existsCall){
+      row.appendChild(mk('a', { className:'button-auma-minimal', href: tel.href }, '📞 Call'));
     }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
+    if(!existsBooking){
+      row.appendChild(mk('a', { className:'button-auma-minimal', href: TG, target:'_blank' }, '📩 Booking'));
     }
-
-    .top-buttons {
-      display: flex;
-      justify-content: space-between;
-      padding: 15px 25px;
-      position: absolute;
-      top: 0;
-      width: 100%;
-      box-sizing: border-box;
+    if(!existsServ){
+      const a = mk('a', { className:'button-auma-minimal' }, '📜 Services');
+      a.href = '#'; a.dataset.open = popupId;
+      row.appendChild(a);
     }
+  }
 
-    .top-buttons .btn {
-      padding: 6px 12px;
-      font-size: 14px;
-      border: 1px solid #c5a75d;
-      background-color: transparent;
-      color: #c5a75d;
-      border-radius: 6px;
-      cursor: pointer;
-    }
+  function ensurePopup(id, title, paragraphs, seoHidden){
+    if(document.getElementById(id+'-overlay')) return;
+    const overlay = mk('div', { id: id+'-overlay', className:'mini-overlay', role:'dialog' });
+    const modal   = mk('div', { className:'mini-modal' });
+    const header  = mk('header', {}, title);
+    const content = mk('div', { className:'content' });
+    paragraphs.forEach(t=> content.appendChild(mk('p', {}, t)));
+    if(seoHidden){ content.appendChild(mk('div', { className:'sr-only' }, seoHidden)); }
+    const actions = mk('div', { className:'actions' });
+    const close   = mk('button', { className:'mini-btn' }, 'Close');
+    close.dataset.close = id;
+    actions.appendChild(close);
+    modal.append(header, content, actions);
+    overlay.appendChild(modal);
+    document.body.appendChild(overlay);
+  }
 
-    .therapist {
-      margin: 50px auto;
-      max-width: 300px;
-    }
+  function bindPopup(id){
+    const overlay = document.getElementById(id+'-overlay'); if(!overlay) return;
+    const openers = document.querySelectorAll('[data-open="'+id+'"]');
+    const close   = overlay.querySelector('[data-close="'+id+'"], .mini-btn');
+    const show = ()=> overlay.style.display='flex';
+    const hide = ()=> overlay.style.display='none';
+    openers.forEach(el=> el.addEventListener('click', e=>{ e.preventDefault(); show(); }));
+    overlay.addEventListener('click', e=>{ if(e.target===overlay) hide(); });
+    if(close) close.addEventListener('click', hide);
+    document.addEventListener('keydown', e=>{ if(e.key==='Escape') hide(); });
+  }
 
-    .therapist-logo {
-      width: 100px;
-      margin-bottom: 10px;
-    }
+  // MICHAEL
+  ensureButtonsUnder(MICHAEL_IMG, MICHAEL_TEL, 'michael');
+  ensurePopup('michael',
+    '🧘 מיכאל — Shiatsu',
+    [
+      'טיפול מקצועי המבוסס על רפואה סינית, שיאצו ועיסוי תאילנדי.',
+      'שחרור מתחים פיזיים ורגשיים, חיזוק הבריאות ואיכות החיים.',
+      'במרכז הארץ: בת ים, תל אביב, רמת גן, חולון. הגעה עד הלקוח בתיאום.',
+      'טלפון: +972 52-739-3732'
+    ],
+    'יעסוי, רפואה סינית, שיאצו, עיסוי תאילנדי, מרכז הארץ, הגעה עד הלקוח'
+  );
+  bindPopup('michael');
 
-    .therapist-photo {
-      width: 200px;
-      height: 200px;
-      border-radius: 10px;
-      object-fit: cover;
-      border: 4px solid white;
-    }
-
-    .caption {
-      font-size: 14px;
-      margin: 10px 0 15px;
-    }
-
-    .button-group {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .button-auma-minimal {
-      display: inline-block;
-      padding: 10px 16px;
-      border: 1px solid #c5a75d;
-      border-radius: 6px;
-      color: #c5a75d;
-      background-color: transparent;
-      font-size: 14px;
-      font-family: 'Helvetica Neue', sans-serif;
-      text-decoration: none;
-      letter-spacing: 0.5px;
-      transition: background-color 0.3s ease, color 0.3s ease;
-    }
-
-    .button-auma-minimal:hover {
-      background-color: #c5a75d;
-      color: white;
-    }
-
-    .footer {
-      margin-top: 50px;
-      padding: 20px;
-      font-size: 16px;
-      color: #c5a75d;
-      font-family: 'Helvetica Neue', sans-serif;
-    }
-
-    .petal {
-      position: fixed;
-      top: -50px;
-      width: 30px;
-      pointer-events: none;
-      z-index: 0;
-      animation: fall linear infinite;
-    }
-
-    @keyframes fall {
-      0% { transform: translateY(-100px) rotate(0deg); opacity: 0; }
-      10% { opacity: 1; }
-      100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
-    }
-
-    #popup, #aboutPopup {
-      display: none;
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.6);
-      z-index: 999;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .popup-card {
-      background: #fff7f0;
-      padding: 25px;
-      max-width: 600px;
-      width: 90%;
-      color: #3c2e2e;
-      border-radius: 12px;
-      text-align: right;
-    }
-
-    .popup-card h2 {
-      color: #a85c4b;
-      font-size: 20px;
-    }
-
-    .popup-card button {
-      margin-top: 15px;
-    }
-  </style>
-</head>
-<body>
-
-  <div class="top-buttons">
-    <button class="btn" onclick="document.getElementById('popup').style.display='flex'">הסכם</button>
-    <div>
-      <button class="btn" onclick="document.getElementById('aboutPopup').style.display='flex'">על האתר</button>
-      <button class="btn">🌐</button>
-    </div>
-  </div>
-
-  <img src="https://i.postimg.cc/x1n5hyC8/7-C34-E01-D-B9-C2-4-A49-8-DA8-AA9-E5-F559-FC0.png" alt="Auma Massage" class="logo">
-
-  <!-- Therapist 1: AUMA TANTRA -->
-  <div class="therapist">
-    <img src="https://i.postimg.cc/bYBk3fJQ/BEA98752-A0-D4-4032-A86-A-911-AB95-BB633.png" alt="AUMA TANTRA Logo" class="therapist-logo">
-    <img src="https://i.postimg.cc/K836D1hB/IMG-3073.jpg" alt="טיפול טנטרה לנשים ולגברים בחיפה – עיסוי טנטרה, ריפוי גוף נפש, מגע מודע" class="therapist-photo">
-    <div class="caption">עיסוי טנטרה, טיפול טנטרה, טנטרה בחיפה, ריפוי גוף נפש</div>
-    <div class="button-group">
-      <a href="tel:+972548330999" class="button-auma-minimal">CALL</a>
-      <a href="https://t.me/Aumatherapy" target="_blank" class="button-auma-minimal">BOOKING</a>
-      <a href="info.html" class="button-auma-minimal">OUR SERVICES</a>
-    </div>
-  </div>
-
-  <!-- Therapist 2: NAMASTE -->
-  <div class="therapist">
-    <img src="https://i.postimg.cc/V6YrtSHW/974-E4865-A2-A8-42-D8-9-ED6-C3-ADD2679-C10.png" alt="NAMASTE Logo" class="therapist-logo">
-    <img src="https://i.postimg.cc/QMghc0RR/IMG-3076.jpg" alt="טיפול טנטרה לנשים ולגברים בחיפה – עיסוי טנטרה, ריפוי גוף נפש, מגע מודע" class="therapist-photo">
-    <div class="caption">עיסוי טנטרה, טיפול טנטרה, טנטרה בחיפה, ריפוי גוף נפש</div>
-    <div class="button-group">
-      <a href="tel:+972548330999" class="button-auma-minimal">CALL</a>
-      <a href="https://t.me/Aumatherapy" target="_blank" class="button-auma-minimal">BOOKING</a>
-      <a href="info.html" class="button-auma-minimal">OUR SERVICES</a>
-    </div>
-  </div>
-
-  <div class="footer">
-    Для сотрудничества: <a href="tel:+972548330999" style="color: #c5a75d; text-decoration: none;">+972 54-8330999</a>
-  </div>
-
-  <!-- Popup Agreement -->
-  <div id="popup">
-    <div class="popup-card">
-      <h2>🌸 אחריות וגבולות מקצועיים – טנטרה בחיפה</h2>
-      <p>העבודה שלי ב-AUMA טנטרה בחיפה נועדה ליצור מרחב טיפולי עדין, בטוח ומכבד לטיפול גופני ואנרגטי.</p>
-      <p><strong>אני מציעה:</strong><br>– טיפול מגע ועיסוי טנטרי<br>– איזון אנרגטי<br>– טקסים של אהבה עצמית ומגע מודע</p>
-      <p><strong>🌿 איני מספקת שירותים אינטימיים.</strong></p>
-      <button onclick="document.getElementById('popup').style.display='none'" class="button-auma-minimal">קראתי והבנתי</button>
-    </div>
-  </div>
-
-  <!-- Popup About -->
-  <div id="aboutPopup">
-    <div class="popup-card">
-      <h2>קצת על האתר – AUMA.life</h2>
-      <p>אתר AUMA.life הוא פורטל טיפולי המוקדש לריפוי, מגע מודע וטיפול הוליסטי...</p>
-      <button onclick="document.getElementById('aboutPopup').style.display='none'" class="button-auma-minimal">סגור</button>
-    </div>
-  </div>
-
-  <script>
-    for (let i = 0; i < 15; i++) {
-      const petal = document.createElement("img");
-      petal.src = "https://i.postimg.cc/cHm5k97s/List-png.png";
-      petal.className = "petal";
-      petal.style.left = Math.random() * 100 + "vw";
-      petal.style.animationDuration = (5 + Math.random() * 10) + "s";
-      petal.style.animationDelay = Math.random() * 10 + "s";
-      document.body.appendChild(petal);
-    }
-  </script>
-
-</body>
-</html>
+  // PANDA
+  ensureButtonsUnder(PANDA_IMG, PANDA_TEL, 'panda');
+  ensurePopup('panda',
+    '🐼 Panda Massage & Spa',
+    [
+      'עיסוי מקצועי בצפון: חיפה, קריות וכל הצפון.',
+      'קלאסי, רקמות עמוק, אוסטאופתיה, כוסות רוח, אבנים חמות, טנטרה.',
+      'אווירה נעימה ומרגיעה.'
+    ],
+    'חיפה, קריות, צפון הארץ, עיסוי מקצועי, עיסוי מפנק, רקמות עמוק, כוסות רוח, אוסטאופתיה, עיסוי שוודי'
+  );
+  bindPopup('panda');
+})();
+</script>
