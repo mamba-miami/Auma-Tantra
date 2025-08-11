@@ -1,107 +1,101 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>AUMA • Tantra Massage</title>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>AUMA • Tantra Massage</title>
+<style>
+  :root{--gold:#c5a746;--ink:#6b5720}
+  html,body{margin:0;padding:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial;background:#fff}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%;height:auto}
 
-  <style>
-    :root{--gold:#c5a746;--ink:#6b5720}
-    html,body{margin:0;padding:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial;background:#fff}
-    a{color:inherit;text-decoration:none}
-    img{display:block;max-width:100%;height:auto}
+  /* Фон */
+  .bg{position:fixed;inset:0;z-index:-1;background:url("https://i.postimg.cc/6px8nnCk/0-CB28-C10-4530-4-DF6-897-A-25-F7-A9-DB1-BE5.png") center/cover no-repeat}
 
-    /* Фон */
-    .bg{position:fixed;inset:0;z-index:-1;background:url("https://i.postimg.cc/6px8nnCk/0-CB28-C10-4530-4-DF6-897-A-25-F7-A9-DB1-BE5.png") center/cover no-repeat}
+  /* Шапка: парящий логотип (без рамок/фона) */
+  header{text-align:center;padding:16px 12px}
+  .logo-top{
+    max-width:210px;margin:0 auto;background:transparent;
+    animation:float 7s ease-in-out infinite;
+  }
+  @keyframes float{
+    0%,100%{ transform:translateY(0) }
+    25%{ transform:translateY(-12px) }
+    50%{ transform:translateY(-18px) }
+    75%{ transform:translateY(-12px) }
+  }
 
-    /* Шапка: парящий большой логотип с тонкой красной окантовкой */
-    header{text-align:center;padding:16px 12px}
-    .logo-top{
-      width:auto; max-width:180px; margin:0 auto;
-      border:1px solid rgba(220,0,0,.65); border-radius:12px; padding:6px; background:#fff;
-      animation:float 6s ease-in-out infinite;
-    }
-    @keyframes float{
-      0%,100%{ transform:translateY(0) }
-      50%{ transform:translateY(-6px) }
-    }
+  /* Компоновка: «стопочка» карточек + видео справа на десктопе */
+  .layout{max-width:1200px;margin:0 auto;padding:0 12px}
+  .grid{display:grid;grid-template-columns:1fr;gap:18px;max-width:600px;margin-inline:auto}
+  @media (min-width:1024px){
+    .layout{display:grid;grid-template-columns:minmax(0,720px) 320px;gap:24px;align-items:start}
+    .grid{max-width:none;margin:0}
+    .aside{position:sticky;top:86px;height:fit-content}
+  }
 
-    /* Компоновка: сетка + видео в сайдбаре на десктопе */
-    .layout{max-width:1200px;margin:0 auto;padding:0 12px}
-    .grid{display:grid;grid-template-columns:1fr;gap:12px;max-width:860px}
-    @media (min-width:1024px){
-      .layout{display:grid;grid-template-columns:1fr 300px;gap:18px;align-items:start}
-      .aside{position:sticky;top:86px;height:fit-content}
-    }
+  /* Карточки: прозрачные + тонкая белая окантовка */
+  .card{
+    border:1px solid rgba(255,255,255,.9);
+    border-radius:14px; padding:12px; text-align:center; background:transparent;
+  }
+  .card:hover{background:rgba(255,255,255,.10)}
+  .logo-small{max-width:100px;margin:0 auto 8px}
 
-    /* Карточки: прозрачные + тонкая белая окантовка */
-    .card{
-      border:1px solid rgba(255,255,255,.55);
-      border-radius:12px; padding:8px; text-align:center;
-      background:transparent; backdrop-filter:saturate(120%) blur(0px);
-    }
-    .card:hover{background:rgba(255,255,255,.15)}
+  /* Фото — чуть крупнее (190×190), скруглённые, белая каёмка */
+  .portrait{
+    width:190px;height:190px;object-fit:cover;border-radius:14px;margin:0 auto;
+    border:1px solid rgba(255,255,255,.98);box-shadow:0 10px 22px rgba(0,0,0,.08);
+  }
+  .caption{font-size:1rem;line-height:1.45;margin:10px 0}
 
-    /* Логотипы над фото — компактные; Фото — почти квадрат + скругление */
-    .logo-small{max-width:90px;margin:0 auto 6px}
-    .portrait{
-      width:140px;height:140px;object-fit:cover;border-radius:12px;margin:0 auto;
-      box-shadow:0 8px 20px rgba(0,0,0,.08);
-    }
-    .caption{font-size:.9rem;line-height:1.35;margin:6px 0}
+  /* Кнопки — крупнее */
+  .button-group{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:10px}
+  .btn{padding:10px 14px;border:1px solid rgba(197,167,70,.7);border-radius:12px;background:#fff;color:var(--ink);font-size:1rem}
 
-    /* Кнопки */
-    .button-group{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-top:6px}
-    .btn{padding:7px 10px;border:1px solid rgba(197,167,70,.6);border-radius:9px;background:#fff;color:var(--ink);font-size:.9rem}
+  /* Видео + кнопка звука (mute/unmute) */
+  .shorts-wrap{max-width:300px;margin:10px auto 0;position:relative}
+  .shorts-box{position:relative;padding-top:170%;border-radius:12px;overflow:hidden;background:#000;box-shadow:0 6px 16px rgba(0,0,0,.14)}
+  .shorts-box iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+  .shorts-poster{position:absolute;inset:0;background:center/cover no-repeat;transition:opacity .6s}
+  .shorts-box.loaded .shorts-poster{opacity:0}
+  .sound-toggle{position:absolute;right:8px;bottom:8px;font-size:.95rem;padding:7px 11px;border:1px solid rgba(197,167,70,.65);border-radius:9px;background:#fff9;cursor:pointer;color:#333}
 
-    /* Видео + кнопка звука (mute/unmute) */
-    .shorts-wrap{max-width:260px;margin:8px auto 0;position:relative}
-    .shorts-box{position:relative;padding-top:170%;border-radius:10px;overflow:hidden;background:#000;box-shadow:0 4px 12px rgba(0,0,0,.12)}
-    .shorts-box iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
-    .shorts-poster{position:absolute;inset:0;background:center/cover no-repeat;transition:opacity .6s}
-    .shorts-box.loaded .shorts-poster{opacity:0}
-    .sound-toggle{position:absolute;right:6px;bottom:6px;font-size:.85rem;padding:5px 8px;border:1px solid rgba(197,167,70,.6);border-radius:7px;background:#fff9;cursor:pointer;color:#333}
+  /* Лепестки сакуры — передний план, разные размеры/яркости */
+  .leaf{
+    position:fixed; top:-12vh; pointer-events:none; z-index:99999;
+    opacity:.42; width:28px; height:auto; filter:saturate(140%);
+    animation: sakuraFall linear infinite;
+  }
+  /* плавное падение с лёгким покачиванием, без хаоса */
+  @keyframes sakuraFall{
+    0%   { transform: translate3d(0,-12vh,0) rotate(0deg); }
+    50%  { transform: translate3d(6vw,48vh,0) rotate(90deg); }
+    100% { transform: translate3d(0,110vh,0) rotate(180deg); }
+  }
 
-    /* Попапы (services/agreement) */
-    .overlay{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(255,255,255,.55);z-index:10000}
-    .modal{max-width:480px;width:min(92%,480px);background:#fff;border:1px solid rgba(197,167,70,.45);border-radius:16px;box-shadow:0 18px 36px rgba(0,0,0,.2)}
-    .modal header{padding:14px 16px 0;text-align:center;font-size:18px}
-    .modal .content{padding:8px 16px 16px;line-height:1.7}
-    .modal .content ul{margin:0 0 10px 0;padding:0 20px}
-    .modal .actions{display:flex;gap:10px;justify-content:center;padding:0 16px 16px}
-    .mini-btn{padding:9px 14px;border:1px solid rgba(197,167,70,.6);border-radius:10px;background:#fff;color:var(--ink)}
+  header,.layout,.shorts-wrap,footer{position:relative;z-index:2}
 
-    /* Боковой FAB: язык + соглашение */
-    .side-fab{position:fixed;right:10px;bottom:90px;display:flex;flex-direction:column;gap:10px;z-index:11000}
-    .fab{width:46px;height:46px;border-radius:50%;border:1px solid rgba(197,167,70,.55);background:#fff9;backdrop-filter:saturate(130%) blur(6px);display:flex;align-items:center;justify-content:center;box-shadow:0 10px 24px rgba(0,0,0,.18);cursor:pointer}
-    .lang-menu{position:absolute;right:54px;bottom:0;display:flex;gap:6px;background:#fff;border:1px solid rgba(197,167,70,.45);border-radius:10px;padding:6px 8px;box-shadow:0 10px 24px rgba(0,0,0,.18);visibility:hidden;opacity:0;transition:.25s}
-    .lang-menu a{font-weight:600}
-
-    /* Лепестки-сакуры — поверх всего */
-    .leaf{
-      position:fixed; top:-10vh; pointer-events:none; z-index:99999;
-      opacity:.30; width:18px; height:auto; filter:saturate(130%);
-    }
-
-    header,.layout,.shorts-wrap,footer{position:relative;z-index:2}
-
-    /* скрытый SEO-текст */
-    .sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-  </style>
+  /* скрытый SEO-текст */
+  .sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+</style>
 </head>
 <body>
 
   <div class="bg"></div>
 
   <header>
-    <!-- Парящий большой логотип (с тонкой красной окантовкой) -->
-    <img class="logo-top" src="https://i.postimg.cc/G3Sf888t/795-A5860-2202-43-D4-866-D-282-FA13-AF2-FA.png" alt="AUMA Massage logo">
+    <!-- верхний логотип (новая ссылка) -->
+    <img class="logo-top"
+         src="https://i.postimg.cc/25X72JpD/47-F699-D2-4-D62-4565-AB13-066240-EC2593.png"
+         alt="AUMA Massage logo">
   </header>
 
   <main class="layout">
-    <!-- Основная колонка с карточками -->
+    <!-- «Стопочка» карточек -->
     <section class="grid">
-      <!-- 1) AUMA -->
+      <!-- AUMA -->
       <article class="card therapist" id="auma">
         <img class="logo-small" src="https://i.postimg.cc/02wVzt1X/B020-EAB2-A4-AE-43-CB-9807-822-CE2-CAC455.png" alt="AUMA TANTRA — לוגו">
         <img class="portrait" src="https://i.postimg.cc/K836D1hB/IMG-3073.jpg" alt="AUMA טנטרה • קליניקה פרטית בחיפה" title="AUMA טנטרה">
@@ -113,12 +107,11 @@
           <a class="btn" href="https://share.google/u5CgvcWoz3tdBZUe9" target="_blank" rel="noopener">🗺️ How to get to us</a>
         </div>
         <div class="sr-only">
-          עיסוי מפנק, עיסוי מקצועי, עיסוי בקלניקה פרטית, מכוני עיסוי מפנק, עיסוי טנטרה, חדש יוקרתי ופרטי בכרמל-חיפה פנקו את עצמכם ברוגע פינוק וחוויה בלתי נשכחת ללא מין !!
-          עיסוי מפנק, עיסוי מקצועי, עיסוי בקלניקה פרטית, מתחמי ספא מפנק, עיסוי טנטרה
+          עיסוי מפנק, עיסוי מקצועי, עיסוי בקלניקה פרטית, מכוני עיסוי מפנק, עיסוי טנטרה…
         </div>
       </article>
 
-      <!-- 2) NAMASTE -->
+      <!-- NAMASTE -->
       <article class="card therapist" id="namaste">
         <img class="logo-small" src="https://i.postimg.cc/V6YrtSHW/974-E4865-A2-A8-42-D8-9-ED6-C3-ADD2679-C10.png" alt="NAMASTE — לוגו">
         <img class="portrait" src="https://i.postimg.cc/QMghc0RR/IMG-3076.jpg" alt="NAMASTE • עיסוי מקצועי" title="NAMASTE">
@@ -129,37 +122,34 @@
           <a class="btn" href="info.html">📜 Services</a>
           <a class="btn" href="https://share.google/u5CgvcWoz3tdBZUe9" target="_blank" rel="noopener">🗺️ How to get to us</a>
         </div>
-        <div class="sr-only">עיסוי מפנק, עיסוי מקצועי, עיסוי בקלניקה פרטית, מתחמי ספא מפנק, עיסוי טנטרה</div>
       </article>
 
-      <!-- 3) MICHAEL -->
+      <!-- MICHAEL -->
       <article class="card therapist" id="michael">
         <img class="logo-small" src="https://i.postimg.cc/qB17tTdQ/FC61-D57-C-68-EC-479-B-997-D-23832-CED6139.png" alt="Michael Lapidus — לוגו">
-        <img class="portrait" src="https://i.postimg.cc/C1LpH3s4/IMG-3414.jpg" alt="מיכאל — צילום המטפל (Shiatsu, רפואה סינית, מרכז)" title="מיכאל • Shiatsu • מרכז">
+        <img class="portrait" src="https://i.postimg.cc/C1LpH3s4/IMG-3414.jpg" alt="מיכאל — Shiatsu, רפואה סינית, מרכז" title="מיכאל • Shiatsu • מרכז">
         <div class="caption">מיכאל — טיפול מקצועי המבוסס על רפואה סינית, שיאצו ועיסוי תאילנדי. הגעה לבית הלקוח בתיאום (מרכז הארץ).</div>
         <div class="button-group">
           <a class="btn" href="tel:+972527393732">📞 Call</a>
           <a class="btn" href="https://t.me/Aumatherapy" target="_blank" rel="noopener">📩 Booking</a>
           <a class="btn" href="#" data-open="michael">📜 Services</a>
         </div>
-        <div class="sr-only">יעסוי, רפואה סינית, שיאצו, עיסוי טאילנדי, מרכז הארץ, הגעה עד הלקוח</div>
       </article>
 
-      <!-- 4) PANDA -->
+      <!-- PANDA (новое фото) -->
       <article class="card therapist" id="panda">
         <img class="logo-small" src="https://i.postimg.cc/bYVTRjw6/DB95-B731-15-F5-4-B50-887-B-6-E179-EE29-C66.png" alt="Panda Massage & Spa — לוגו">
-        <img class="portrait" src="https://i.postimg.cc/Hnk5mk47/IMG-3417.jpg" alt="Panda Massage & Spa — צילום בחיפה והקריות" title="Panda Massage &amp; Spa">
+        <img class="portrait" src="https://i.postimg.cc/5yzgHmRM/IMG-3417.jpg" alt="Panda Massage & Spa — צילום בחיפה והקריות" title="Panda Massage &amp; Spa">
         <div class="caption">Panda — עיסוי מקצועי ומפנק בצפון: חיפה, קריות וכל האזור. אווירה נקייה ונעימה.</div>
         <div class="button-group">
           <a class="btn" href="tel:+972548330999">📞 Call</a>
           <a class="btn" href="https://t.me/Aumatherapy" target="_blank" rel="noopener">📩 Booking</a>
           <a class="btn" href="#" data-open="panda">📜 Services</a>
         </div>
-        <div class="sr-only">חיפה, קריות, צפון הארץ, עיסוי מקצועי, עיסוי מפנק, רקמות עמוק, כוסות רוח, אוסטאופתיה, עיסוי שוודי, אבנים חמות, עיסוי טנטרה</div>
       </article>
     </section>
 
-    <!-- Правый сайдбар: видео -->
+    <!-- Сайдбар: видео -->
     <aside class="aside">
       <section class="shorts-wrap" aria-label="AUMA intro video">
         <div class="shorts-box">
@@ -171,164 +161,50 @@
             allowfullscreen
             loading="lazy"></iframe>
           <div class="shorts-poster" style="background-image:url('https://i.postimg.cc/YCjFd4jZ/IMG-3410.jpg');"></div>
-          <button class="sound-toggle" id="soundToggle">Sound</button>
+          <button class="sound-toggle" id="soundToggle">Sound: Off</button>
         </div>
-        <div class="sr-only">וידאו אנכי בסגנון Reels/Shorts של AUMA: עיסוי טנטרה, עיסוי מקצועי ואהבה לעצמך.</div>
+        <div class="sr-only">וידאו אנכי בסגנון Reels/Shorts של AUMA.</div>
       </section>
     </aside>
   </main>
 
   <footer style="text-align:center;padding:24px 12px;color:#555">
     <p>© AUMA • Tantra Massage.</p>
-    <p><a href="https://www.instagram.com/tantra_secret" target="_blank" rel="noopener">Instagram</a> • <a href="info.html">🗺️ How to get to us</a></p>
-    <p style="color:#c5a746">Для сотрудничества: <a href="tel:+972548330999" style="color:inherit;border-bottom:1px dashed rgba(197,167,70,.55)">+972 54-833-0999</a></p>
   </footer>
 
-  <!-- POPUPS: SERVICES -->
-  <div id="michael-overlay" class="overlay" role="dialog" aria-modal="true">
-    <div class="modal">
-      <header>🧘 מיכאל — Shiatsu</header>
-      <div class="content">
-        <p>טיפול מקצועי המבוסס על רפואה סינית, שיאצו ועיסוי תאילנדי.</p>
-        <p>שחרור מתחים פיזיים ורגשיים, חיזוק הבריאות ואיכות החיים.</p>
-        <p>במרכז הארץ: בת ים, תל אביב, רמת גן, חולון. הגעה עד הלקוח בתיאום.</p>
-        <p>טלפון: <a href="tel:+972527393732">+972 52-739-3732</a></p>
-        <div class="sr-only">יעסוי, רפואה סינית, שיאצו, עיסוי טאילנדי, מרכז הארץ, הגעה עד הלקוח</div>
-      </div>
-      <div class="actions"><button class="mini-btn" data-close="michael">Close</button></div>
-    </div>
-  </div>
-
-  <div id="panda-overlay" class="overlay" role="dialog" aria-modal="true">
-    <div class="modal">
-      <header>🐼 Panda Massage &amp; Spa</header>
-      <div class="content">
-        <p>עיסוי מקצועי בצפון: חיפה, קריות וכל הצפון.</p>
-        <p>קלאסי, רקמות עמוק, אוסטאופתיה, כוסות רוח, אבנים חמות, טנטרה.</p>
-        <p>אווירה נעימה ומרגיעה.</p>
-        <div class="sr-only">חיפה, קריות, צפון הארץ, עיסוי מקצועי, עיסוי מפנק, רקמות עמוק, כוסות רוח, אוסטאופתיה, עיסוי שוודי</div>
-      </div>
-      <div class="actions"><button class="mini-btn" data-close="panda">Close</button></div>
-    </div>
-  </div>
-
-  <!-- POPUP: AGREEMENT -->
-  <div id="agreement-overlay" class="overlay" role="dialog" aria-modal="true">
-    <div class="modal">
-      <header>📄 הסכמת מטופל/ת • תנאי טיפול</header>
-      <div class="content">
-        <p>💠 השירות הוא <strong>טיפול במגע מקצועי ללא מין</strong>. אין לבקש או להציע מגע מיני.</p>
-        <ul>
-          <li>🤝 <strong>ללא מגע באזורים אינטימיים</strong>. המגע מתבצע בהסכמה ובתקשורת ברורה בלבד.</li>
-          <li>🛑 ניתן <strong>להפסיק את הטיפול בכל רגע</strong> – על ידי המטופל/ת או המטפל/ת.</li>
-          <li>📅 ביטול/דחייה: יש להודיע <strong>לפחות 24 שעות מראש</strong>. אחרת, המקדמה אינה מוחזרת.</li>
-          <li>🔞 אני מאשר/ת שאני/ני <strong>מעל גיל 18</strong>.</li>
-        </ul>
-        <p><strong>התוויות נגד</strong> (אין להגיע לטיפול אם מתקיים אחד מהבאים):</p>
-        <ul>
-          <li>מחלות זיהומיות אקוטיות, חום.</li>
-          <li>מחלות עור מדבקות, פצעים פתוחים.</li>
-          <li><strong>אונקולוגיה פעילה</strong> ללא אישור רפואי.</li>
-          <li><strong>טרомбוזה / בעיות קרישה</strong>.</li>
-          <li>שיכרון מאלכוהול / סמים.</li>
-          <li>הריון בסיכון, או כל מצב רפואי שמצריך אישור רופא.</li>
-        </ul>
-        <p>באישור ההמשך אני מאשר/ת שקראתי והבנתי את כל הנ”ל.</p>
-      </div>
-      <div class="actions"><button class="mini-btn" data-close="agreement">הבנתי</button></div>
-    </div>
-  </div>
-
-  <!-- Боковые FAB: языки и соглашение -->
-  <div class="side-fab" aria-label="Quick actions">
-    <div class="fab" id="lang-fab" title="Language / שפה">🌐</div>
-    <div class="lang-menu" id="lang-menu" aria-hidden="true">
-      <a href="?lang=he" class="btn">HE</a>
-      <a href="?lang=ru" class="btn">RU</a>
-    </div>
-    <button class="fab" id="agreement-fab" title="סיכום טיפול / Agreement">📄</button>
-  </div>
-
-  <!-- Лепестки сакуры (поверх всего, интенсивнее) -->
+  <!-- Лепестки сакуры: передний план, разные размеры/яркости -->
   <script>
     (function(){
       document.querySelectorAll('.leaf').forEach(n=>n.remove());
       const isMob = matchMedia('(max-width: 600px)').matches;
-      const COUNT = isMob ? 10 : 16;  // интенсивнее
+      const COUNT = isMob ? 14 : 24;  // больше листьев
       const IMG = "https://i.postimg.cc/cHm5k97s/List-png.png";
       for (let i=0;i<COUNT;i++){
         const el = document.createElement('img');
         el.src = IMG; el.alt = ""; el.className = "leaf";
+        // размеры и прозрачность для «перспективы»
+        const size = 18 + Math.random()*26;            // 18–44px
+        const opac = 0.25 + Math.random()*0.45;        // 0.25–0.70
+        const dur  = 17 + Math.random()*11;            // 17–28 c
+        const delay= (Math.random()*6).toFixed(2);
+        el.style.width = size + "px";
+        el.style.opacity = opac;
         el.style.left = (Math.random()*100) + "vw";
-        const dur   = 14 + Math.random()*10;           // 14–24 c
-        const waveX = 12 + Math.random()*24;           // амплитуда
-        const rot   = (Math.random()*180|0) * (Math.random()<.5? -1:1);
-        const delay = (Math.random()*5).toFixed(2);
-        const kf = `
-          @keyframes sakura_${i}{
-            0%   { transform: translate3d(0,-12vh,0) rotate(0deg); }
-            25%  { transform: translate3d(${waveX}vw,15vh,0) rotate(${rot/2}deg); }
-            50%  { transform: translate3d(${-waveX}vw,45vh,0) rotate(${rot}deg); }
-            75%  { transform: translate3d(${waveX/2}vw,80vh,0) rotate(${rot*1.5}deg); }
-            100% { transform: translate3d(0,110vh,0) rotate(${rot*2}deg); }
-          }`;
-        const s = document.createElement('style'); s.textContent = kf; document.head.appendChild(s);
-        el.style.animation = `sakura_${i} ${dur}s linear ${delay}s infinite`;
+        el.style.animationDuration = dur + "s";
+        el.style.animationDelay = delay + "s";
         document.body.appendChild(el);
       }
     })();
   </script>
 
-  <!-- Поведение попапов, видео, FAB -->
+  <!-- Видео: скрыть постер, переключатель mute/unmute -->
   <script>
     (function(){
-      // Services popups
-      function bind(id){
-        const openers=document.querySelectorAll('[data-open="'+id+'"]');
-        const overlay=document.getElementById(id+'-overlay');
-        if(!overlay) return;
-        const show=()=>overlay.style.display='flex';
-        const hide=()=>overlay.style.display='none';
-        openers.forEach(el=>el.addEventListener('click',e=>{e.preventDefault();show();}));
-        overlay.addEventListener('click',e=>{if(e.target===overlay)hide();});
-        overlay.querySelector('.mini-btn')?.addEventListener('click',hide);
-        document.addEventListener('keydown',e=>{if(e.key==='Escape')hide();});
-      }
-      bind('michael'); bind('panda');
-
-      // Agreement FAB
-      const agrFab = document.getElementById('agreement-fab');
-      const agrOv  = document.getElementById('agreement-overlay');
-      if(agrFab && agrOv){
-        const show=()=>agrOv.style.display='flex';
-        const hide=()=>agrOv.style.display='none';
-        agrFab.addEventListener('click',show);
-        agrOv.addEventListener('click',e=>{if(e.target===agrOv)hide();});
-        agrOv.querySelector('[data-close="agreement"]')?.addEventListener('click',hide);
-        document.addEventListener('keydown',e=>{if(e.key==='Escape')hide();});
-      }
-
-      // Language FAB (клик, работает на мобиле)
-      const langFab = document.getElementById('lang-fab');
-      const langMenu = document.getElementById('lang-menu');
-      if(langFab && langMenu){
-        let open=false;
-        function set(v){langMenu.style.visibility=v?'visible':'hidden';langMenu.style.opacity=v?'1':'0';}
-        set(false);
-        langFab.addEventListener('click',(e)=>{e.stopPropagation();open=!open;set(open);});
-        document.addEventListener('click',()=>{if(open){open=false;set(false);}});
-        document.addEventListener('keydown',(e)=>{if(e.key==='Escape'&&open){open=false;set(false);}});
-      }
-
-      // Видео: скрыть постер, переключатель mute/unmute
       const iframe = document.getElementById('aumaShorts');
       const btn = document.getElementById('soundToggle');
-      iframe?.addEventListener('load',function(){
-        this.parentElement.classList.add('loaded');
-      });
+      iframe?.addEventListener('load',()=>iframe.parentElement.classList.add('loaded'));
       if(iframe && btn && window.postMessage){
-        let muted = true; // стартуем без звука
-        btn.textContent = "Sound: Off";
+        let muted = true;
         btn.addEventListener('click', function(){
           muted = !muted;
           const cmd = muted ? 'mute' : 'unMute';
@@ -339,6 +215,5 @@
       }
     })();
   </script>
-
 </body>
 </html>
