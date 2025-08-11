@@ -10,45 +10,42 @@
     html,body{margin:0;padding:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial}
     a{color:inherit;text-decoration:none}
     img{display:block;max-width:100%;height:auto}
-    body{background:transparent;color:#fff}
+
+    /* Весь текст — как на кнопках (тот же оттенок) */
+    body{background:transparent;color:var(--ink)}
 
     /* Фон */
     .bg{position:fixed;inset:0;z-index:-1;
       background:url("https://i.postimg.cc/6px8nnCk/0-CB28-C10-4530-4-DF6-897-A-25-F7-A9-DB1-BE5.png") center/cover no-repeat}
 
-    /* Шапка: парящий логотип */
+    /* Шапка: парящий логотип (чуть больше) */
     header{text-align:center;padding:16px 12px}
     .logo-top{
-      max-width:210px;margin:0 auto;background:transparent;
+      max-width:240px;margin:0 auto;background:transparent;
       animation:float 7s ease-in-out infinite; will-change:transform;
     }
     @keyframes float{
       0%,100%{ transform:translateY(0) }
-      25%{    transform:translateY(-12px) }
-      50%{    transform:translateY(-18px) }
-      75%{    transform:translateY(-12px) }
+      25%{    transform:translateY(-14px) }
+      50%{    transform:translateY(-20px) }
+      75%{    transform:translateY(-14px) }
     }
 
-    /* Макет: стопочка + сайдбар с видео */
+    /* Макет: стопочка; видео сделаем плавающим (ниже) */
     .layout{max-width:1200px;margin:0 auto;padding:0 12px}
-    .grid{display:grid;grid-template-columns:1fr;gap:18px;max-width:620px;margin-inline:auto}
-    @media (min-width:1024px){
-      .layout{display:grid;grid-template-columns:minmax(0,740px) 320px;gap:24px;align-items:start}
-      .grid{max-width:none;margin:0}
-      .aside{position:sticky;top:88px;height:fit-content}
-    }
+    .grid{display:grid;grid-template-columns:1fr;gap:18px;max-width:640px;margin-inline:auto}
 
     /* Карточки: прозрачные */
     .card{border:none;border-radius:14px;padding:12px;text-align:center;background:transparent}
     .logo-small{max-width:100px;margin:0 auto 8px}
 
-    /* Фото: 190×190, скругление + тонкая белая рамка */
+    /* Фото: ЧУТЬ больше (210×210), скругление + тонкая белая рамка */
     .portrait{
-      width:190px;height:190px;object-fit:cover;border-radius:14px;margin:0 auto;
+      width:210px;height:210px;object-fit:cover;border-radius:14px;margin:0 auto;
       border:1px solid rgba(255,255,255,.95);box-shadow:0 10px 22px rgba(0,0,0,.08)
     }
     .caption{font-size:1rem;line-height:1.45;margin:10px 0}
-    .tags{margin-top:8px;font-size:.9rem;color:#fff;opacity:.9}
+    .tags{margin-top:8px;font-size:.9rem;opacity:.95}
 
     /* Кнопки */
     .button-group{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:10px}
@@ -58,13 +55,27 @@
       color:var(--ink);font-size:1rem
     }
 
-    /* Видео (Shorts) */
-    .shorts-wrap{max-width:300px;margin:10px auto 0;position:relative}
-    .shorts-box{position:relative;padding-top:170%;border-radius:12px;overflow:hidden;background:#000;box-shadow:0 6px 16px rgba(0,0,0,.14)}
-    .shorts-box iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-    .shorts-poster{position:absolute;inset:0;background:center/cover no-repeat;transition:opacity .6s}
-    .shorts-box.loaded .shorts-poster{opacity:0}
-    .sound-toggle{position:absolute;right:8px;bottom:8px;font-size:.95rem;padding:7px 11px;border:1px solid rgba(197,167,70,.65);border-radius:9px;background:#fff9;cursor:pointer;color:#333}
+    /* Плавающее видео: draggable + resize */
+    .float-video{
+      position:fixed; right:12px; bottom:110px; z-index:9000;
+      width:280px; border-radius:12px; box-shadow:0 8px 22px rgba(0,0,0,.22);
+      background:#000; overflow:hidden;
+      touch-action:none;
+    }
+    .float-video .dragbar{
+      position:absolute; top:0; right:0; left:0; height:28px;
+      display:flex; justify-content:flex-end; align-items:center;
+      background:linear-gradient(180deg, rgba(0,0,0,.45), rgba(0,0,0,0));
+      padding:0 6px; gap:6px; cursor:grab; user-select:none;
+      z-index:2;
+    }
+    .fv-btn{
+      font:inherit; font-size:.9rem; line-height:1; padding:6px 9px;
+      border:1px solid rgba(197,167,70,.65); border-radius:8px; color:#222;
+      background:#fff9; cursor:pointer;
+    }
+    .float-video .box{position:relative; width:100%; padding-top:177.78%}
+    .float-video iframe{position:absolute; inset:0; width:100%; height:100%; border:0}
 
     /* Лепестки сакуры — передний план, разная яркость/размер */
     .leaf{
@@ -91,9 +102,9 @@
     .lang-menu{position:absolute;right:54px;bottom:0;display:flex;gap:6px;background:#fff;border:1px solid rgba(197,167,70,.45);border-radius:10px;padding:6px 8px;box-shadow:0 10px 24px rgba(0,0,0,.18);visibility:hidden;opacity:0;transition:.25s}
     .lang-menu a{font-weight:600}
 
-    footer{max-width:1200px;margin:36px auto 48px;padding:0 12px;text-align:center;color:#ddd}
-    footer a{color:#fff;border-bottom:1px dashed rgba(255,255,255,.4)}
-    header,.layout,.shorts-wrap,footer{position:relative;z-index:2}
+    footer{max-width:1200px;margin:36px auto 48px;padding:0 12px;text-align:center;color:var(--ink)}
+    footer a{color:var(--ink);border-bottom:1px dashed rgba(197,167,70,.45)}
+    header,.layout,footer{position:relative;z-index:2}
     .sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
   </style>
 </head>
@@ -167,26 +178,25 @@
       </article>
 
     </section>
-
-    <!-- Видео в сайдбаре -->
-    <aside class="aside">
-      <section class="shorts-wrap" aria-label="AUMA intro video">
-        <div class="shorts-box">
-          <iframe
-            id="aumaShorts"
-            src="https://www.youtube.com/embed/P2FA1aRDkIU?autoplay=1&mute=1&loop=1&playlist=P2FA1aRDkIU&modestbranding=1&playsinline=1&rel=0&enablejsapi=1"
-            title="AUMA • Tantra Massage — video"
-            allow="autoplay; encrypted-media; picture-in-picture"
-            allowfullscreen
-            loading="lazy"></iframe>
-          <div class="shorts-poster" style="background-image:url('https://i.postimg.cc/YCjFd4jZ/IMG-3410.jpg');"></div>
-          <button class="sound-toggle" id="soundToggle">Sound: Off</button>
-        </div>
-        <div class="sr-only">וידאו אנכי בסגנון Reels/Shorts של AUMA.</div>
-      </section>
-    </aside>
-
   </main>
+
+  <!-- Плавающее видео: можно перетаскивать и менять размер -->
+  <div class="float-video" id="floatVideo" aria-label="AUMA video draggable">
+    <div class="dragbar" id="dragbar">
+      <button class="fv-btn" id="fvMinus">–</button>
+      <button class="fv-btn" id="fvPlus">+</button>
+      <button class="fv-btn" id="fvSound">Sound: Off</button>
+    </div>
+    <div class="box">
+      <iframe
+        id="aumaShorts"
+        src="https://www.youtube.com/embed/P2FA1aRDkIU?autoplay=1&mute=1&loop=1&playlist=P2FA1aRDkIU&modestbranding=1&playsinline=1&rel=0&enablejsapi=1"
+        title="AUMA • Tantra Massage — video"
+        allow="autoplay; encrypted-media; picture-in-picture"
+        allowfullscreen
+        loading="lazy"></iframe>
+    </div>
+  </div>
 
   <!-- Footer -->
   <footer>
@@ -265,7 +275,7 @@
     (function(){
       document.querySelectorAll('.leaf').forEach(n=>n.remove());
       const isMob = matchMedia('(max-width: 600px)').matches;
-      const COUNT = isMob ? 16 : 28;  // больше лепестков
+      const COUNT = isMob ? 16 : 28;
       const IMG = "https://i.postimg.cc/cHm5k97s/List-png.png";
       for (let i=0;i<COUNT;i++){
         const el = document.createElement('img');
@@ -284,7 +294,7 @@
     })();
   </script>
 
-  <!-- Скрипты: попапы, видео, FAB -->
+  <!-- Скрипты: попапы, видео (drag+resize), FAB -->
   <script>
     (function(){
       // Services popups
@@ -325,20 +335,75 @@
         document.addEventListener('keydown',(e)=>{if(e.key==='Escape'&&open){open=false;set(false);}});
       }
 
-      // Video: poster + mute/unmute
+      // Плавающее видео: drag + resize + mute/unmute
+      const fv = document.getElementById('floatVideo');
+      const bar = document.getElementById('dragbar');
+      const minus = document.getElementById('fvMinus');
+      const plus  = document.getElementById('fvPlus');
+      const sound = document.getElementById('fvSound');
       const iframe = document.getElementById('aumaShorts');
-      const btn = document.getElementById('soundToggle');
-      iframe?.addEventListener('load',()=>iframe.parentElement.classList.add('loaded'));
-      if(iframe && btn && window.postMessage){
-        let muted = true;
-        btn.addEventListener('click', function(){
-          muted = !muted;
-          const cmd = muted ? 'mute' : 'unMute';
-          iframe.contentWindow.postMessage(JSON.stringify({event:'command',func:cmd,args:[]}),'*');
-          iframe.contentWindow.postMessage(JSON.stringify({event:'command',func:'playVideo',args:[]}),'*');
-          btn.textContent = muted ? "Sound: Off" : "Sound: On";
-        });
+
+      // Drag (mouse + touch)
+      let dragging=false, sx=0, sy=0, ox=0, oy=0;
+      function startDrag(x,y){
+        dragging=true; sx=x; sy=y;
+        const rect=fv.getBoundingClientRect();
+        ox=rect.left; oy=rect.top;
+        bar.style.cursor='grabbing';
       }
+      function onMove(x,y){
+        if(!dragging) return;
+        let nx = ox + (x - sx);
+        let ny = oy + (y - sy);
+        // keep inside viewport
+        const vw = window.innerWidth, vh = window.innerHeight;
+        const r = fv.getBoundingClientRect();
+        const w = r.width, h = r.height;
+        nx = Math.max(0, Math.min(vw - w, nx));
+        ny = Math.max(0, Math.min(vh - h, ny));
+        fv.style.left = nx + 'px';
+        fv.style.top  = ny + 'px';
+        fv.style.right = 'auto';
+        fv.style.bottom= 'auto';
+      }
+      function endDrag(){ dragging=false; bar.style.cursor='grab'; }
+
+      bar.addEventListener('mousedown',e=>startDrag(e.clientX,e.clientY));
+      window.addEventListener('mousemove',e=>onMove(e.clientX,e.clientY));
+      window.addEventListener('mouseup',endDrag);
+
+      bar.addEventListener('touchstart',e=>{
+        const t=e.touches[0]; startDrag(t.clientX,t.clientY);
+      }, {passive:false});
+      window.addEventListener('touchmove',e=>{
+        const t=e.touches[0]; onMove(t.clientX,t.clientY);
+      }, {passive:false});
+      window.addEventListener('touchend',endDrag);
+
+      // Resize
+      function setWidth(w){
+        const min=200, max=Math.min(520, window.innerWidth-24);
+        const nw=Math.max(min, Math.min(max, w));
+        fv.style.width = nw + 'px';
+      }
+      plus.addEventListener('click', ()=> {
+        const w = fv.getBoundingClientRect().width;
+        setWidth(w + 40);
+      });
+      minus.addEventListener('click', ()=> {
+        const w = fv.getBoundingClientRect().width;
+        setWidth(w - 40);
+      });
+
+      // Mute / Unmute
+      let muted = true;
+      sound.addEventListener('click', function(){
+        muted = !muted;
+        const cmd = muted ? 'mute' : 'unMute';
+        iframe.contentWindow.postMessage(JSON.stringify({event:'command',func:cmd,args:[]}),'*');
+        iframe.contentWindow.postMessage(JSON.stringify({event:'command',func:'playVideo',args:[]}),'*');
+        sound.textContent = muted ? "Sound: Off" : "Sound: On";
+      });
     })();
   </script>
 
