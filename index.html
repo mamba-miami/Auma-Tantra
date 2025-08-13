@@ -1,24 +1,15 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
-  <!-- =================================================================== -->
-  <!-- META: charset & viewport                                            -->
-  <!-- =================================================================== -->
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>AUMA • Tantra Massage</title>
 
-  <!-- =================================================================== -->
-  <!-- SEO: Description + Canonical + Robots                               -->
-  <!-- =================================================================== -->
   <meta name="description"
         content="AUMA טנטרה בחיפה: עיסוי טנטרה מקצועי, עיסוי מפנק בקליניקה פרטית ונקייה. הזמנות בטלפון או בטלגרם. ללא מין."/>
   <link rel="canonical" href="https://auma.life/"/>
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"/>
 
-  <!-- =================================================================== -->
-  <!-- Open Graph / Twitter                                                -->
-  <!-- =================================================================== -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="AUMA • Tantra Massage">
   <meta property="og:description"
@@ -32,15 +23,9 @@
         content="עיסוי טנטרה מקצועי בחיפה. קליניקה פרטית ונקייה. הזמנות בטלפון או בטלגרם.">
   <meta name="twitter:image" content="https://i.postimg.cc/YCjFd4jZ/IMG-3410.jpg">
 
-  <!-- =================================================================== -->
-  <!-- hreflang                                                             -->
-  <!-- =================================================================== -->
   <link rel="alternate" href="https://auma.life/" hreflang="he" />
   <link rel="alternate" href="https://auma.life/" hreflang="x-default" />
 
-  <!-- =================================================================== -->
-  <!-- Preload ключевых изображений                                        -->
-  <!-- =================================================================== -->
   <link rel="preload" as="image"
         href="https://i.postimg.cc/25X72JpD/47-F699-D2-4-D62-4565-AB13-066240-EC2593.png">
   <link rel="preload" as="image"
@@ -50,52 +35,22 @@
   <link rel="preload" as="image"
         href="https://i.postimg.cc/YCjFd4jZ/IMG-3410.jpg">
 
-  <!-- =================================================================== -->
-  <!-- Favicon                                                              -->
-  <!-- =================================================================== -->
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ctext y='50' x='6' font-size='48'%3E🪷%3C/text%3E%3C/svg%3E">
   <meta name="theme-color" content="#c5a746"/>
 
-  <!-- =================================================================== -->
-  <!-- STYLES                                                               -->
-  <!-- =================================================================== -->
   <style>
     :root{
       --gold:#c5a746;
-      --ink:#6b5720; /* цвет текста везде, как на кнопках */
+      --ink:#6b5720;
     }
-
-    html,body{
-      margin:0;
-      padding:0;
-      font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial;
-    }
+    html,body{ margin:0; padding:0; font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial; }
     a{ color:inherit; text-decoration:none }
     img{ display:block; max-width:100%; height:auto }
-
-    /* Весь текст — оттенок как на кнопках */
     body{ background:transparent; color:var(--ink) }
-
-    /* Фон */
-    .bg{
-      position:fixed; inset:0; z-index:-1;
-      background:url("https://i.postimg.cc/6px8nnCk/0-CB28-C10-4530-4-DF6-897-A-25-F7-A9-DB1-BE5.png") center/cover no-repeat;
-    }
-
-    /* Шапка: парящий логотип (увеличен) */
+    .bg{ position:fixed; inset:0; z-index:-1; background:url("https://i.postimg.cc/6px8nnCk/0-CB28-C10-4530-4-DF6-897-A-25-F7-A9-DB1-BE5.png") center/cover no-repeat; }
     header{ text-align:center; padding:16px 12px }
-    .logo-top{
-      max-width:240px; margin:0 auto; background:transparent;
-      animation:float 7s ease-in-out infinite; will-change:transform;
-    }
-    @keyframes float{
-      0%,100%{ transform:translateY(0) }
-      25%{    transform:translateY(-14px) }
-      50%{    transform:translateY(-20px) }
-      75%{    transform:translateY(-14px) }
-    }
-
-    /* Макет: контент + сайдбар (видео статичное) */
+    .logo-top{ max-width:240px; margin:0 auto; background:transparent; animation:float 7s ease-in-out infinite; will-change:transform; }
+    @keyframes float{ 0%,100%{ transform:translateY(0) } 25%{ transform:translateY(-14px) } 50%{ transform:translateY(-20px) } 75%{ transform:translateY(-14px) } }
     .layout{ max-width:1200px; margin:0 auto; padding:0 12px }
     .grid{ display:grid; grid-template-columns:1fr; gap:18px; max-width:640px; margin-inline:auto }
     @media (min-width:1024px){
@@ -103,30 +58,20 @@
       .grid{ max-width:none; margin:0 }
       .aside{ position:sticky; top:88px; height:fit-content }
     }
-
-    /* Карточки */
     .card{ border:none; border-radius:14px; padding:12px; text-align:center; background:transparent }
     .logo-small{ max-width:100px; margin:0 auto 8px }
-
-    /* Фото терапевтов: 210×210, скругление + тонкая белая рамка */
     .portrait{
       width:210px; height:210px; object-fit:cover; border-radius:14px; margin:0 auto;
       border:1px solid rgba(255,255,255,.95); box-shadow:0 10px 22px rgba(0,0,0,.08)
     }
-
     .caption{ font-size:1rem; line-height:1.45; margin:10px 0 }
     .tags{ margin-top:8px; font-size:.9rem; opacity:.95 }
-
-    /* Кнопки */
     .button-group{ display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-top:10px }
     .btn{
       padding:10px 14px; border:1px solid rgba(197,167,70,.7); border-radius:12px;
       background:rgba(255,255,255,.15); backdrop-filter:blur(4px);
       color:var(--ink); font-size:1rem
-    }
-
-    /* Видео (Shorts) — статично в сайдбаре */
-    .shorts-wrap{ max-width:300px; margin:10px auto 0; position:relative }
+    }    .shorts-wrap{ max-width:300px; margin:10px auto 0; position:relative }
     .shorts-box{
       position:relative; padding-top:170%; border-radius:12px; overflow:hidden;
       background:#000; box-shadow:0 6px 16px rgba(0,0,0,.14)
@@ -138,8 +83,6 @@
       position:absolute; right:8px; bottom:8px; font-size:.95rem; padding:7px 11px;
       border:1px solid rgba(197,167,70,.65); border-radius:9px; background:#fff9; cursor:pointer; color:#333
     }
-
-    /* Лепестки сакуры — передний план */
     .leaf{
       position:fixed; top:-12vh; pointer-events:none; z-index:99999;
       opacity:.42; width:28px; height:auto; filter:saturate(140%);
@@ -150,8 +93,6 @@
       50%  { transform: translate3d(6vw,48vh,0) rotate(90deg); }
       100% { transform: translate3d(0,110vh,0) rotate(180deg); }
     }
-
-    /* Попапы (Services) */
     .overlay{
       position:fixed; inset:0; display:none; align-items:center; justify-content:center;
       background:rgba(255,255,255,.55); z-index:10000;
@@ -165,12 +106,9 @@
     .modal .content{ padding:8px 16px 16px; line-height:1.7 }
     .modal .actions{ display:flex; gap:10px; justify-content:center; padding:0 16px 16px }
     .mini-btn{ padding:9px 14px; border:1px solid rgba(197,167,70,.6); border-radius:10px; background:#fff; color:var(--ink) }
-
-    /* Нижний блок (как на фото) */
     footer{ max-width:1200px; margin:36px auto 48px; padding:0 12px; text-align:center }
     .foot-line{ margin:6px 0 }
     .foot-line a{ border-bottom:1px dashed rgba(197,167,70,.45) }
-
     header,.layout,footer{ position:relative; z-index:2 }
     .sr-only{
       position:absolute!important; width:1px; height:1px; padding:0; margin:-1px;
@@ -178,9 +116,6 @@
     }
   </style>
 
-  <!-- =================================================================== -->
-  <!-- JSON-LD (Local Business)                                            -->
-  <!-- =================================================================== -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -194,11 +129,19 @@
     "description": "עיסוי טנטרה מקצועי ומפנק בקליניקה פרטית ונקייה בחיפה. הזמנות בטלפון או בטלגרם."
   }
   </script>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-C7ZYDZ8G5Y"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-C7ZYDZ8G5Y');
+  </script>
 </head>
 
 <body>
-
-  <!-- скрытый H1 для SEO (не ломает дизайн) -->
+    <!-- скрытый H1 для SEO -->
   <h1 class="sr-only">AUMA טנטרה • עיסוי טנטרה מקצועי בחיפה</h1>
 
   <!-- Фон -->
@@ -214,7 +157,7 @@
   <!-- Контент + сайдбар -->
   <main class="layout">
 
-    <!-- Стопочка карточек -->
+    <!-- Карточки -->
     <section class="grid">
 
       <!-- AUMA -->
@@ -294,7 +237,7 @@
 
     </section>
 
-    <!-- Видео в сайдбаре (статичное) -->
+    <!-- Видео в сайдбаре -->
     <aside class="aside">
       <section class="shorts-wrap" aria-label="AUMA intro video">
         <div class="shorts-box">
@@ -314,8 +257,7 @@
     </aside>
 
   </main>
-
-  <!-- Нижний блок — как на фото (ровно, без кнопок) -->
+    <!-- Подвал -->
   <footer>
     <p class="foot-line">.AUMA • Tantra Massage ©</p>
     <p class="foot-line">
@@ -362,9 +304,9 @@
       for (let i=0;i<COUNT;i++){
         const el = document.createElement('img');
         el.src = IMG; el.alt = ""; el.className = "leaf";
-        const size = 18 + Math.random()*26;     // 18–44px
-        const opac = 0.25 + Math.random()*0.45; // 0.25–0.70
-        const dur  = 17 + Math.random()*11;     // 17–28 s
+        const size = 18 + Math.random()*26;
+        const opac = 0.25 + Math.random()*0.45;
+        const dur  = 17 + Math.random()*11;
         const del  = (Math.random()*6).toFixed(2);
         el.style.width = size + "px";
         el.style.opacity = opac;
@@ -376,18 +318,16 @@
     })();
   </script>
 
-  <!-- Видео: постер + mute/unmute + попапы -->
+  <!-- Видео, попапы, звук -->
   <script>
     (function(){
       const iframe = document.getElementById('aumaShorts');
       const btn = document.getElementById('soundToggle');
 
-      // Плавное скрытие постера, когда iframe загрузился
       iframe?.addEventListener('load',()=>{
         iframe.parentElement.classList.add('loaded');
       });
 
-      // Управление звуком YouTube
       if(iframe && btn && window.postMessage){
         let muted = true;
         btn.addEventListener('click', function(){
@@ -399,7 +339,6 @@
         });
       }
 
-      // Открытие попапов
       document.querySelectorAll('[data-open="michael"]').forEach(a=>{
         a.addEventListener('click',e=>{
           e.preventDefault();
@@ -413,7 +352,6 @@
         });
       });
 
-      // Закрытие попапов: клик по фону / кнопка / ESC
       document.querySelectorAll('.overlay').forEach(ov=>{
         ov.addEventListener('click',e=>{
           if(e.target===ov) ov.style.display='none';
