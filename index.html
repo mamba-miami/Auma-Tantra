@@ -17,10 +17,9 @@
   <style>
     :root {
       --gold: #d4af37;
-      --bg: rgba(255, 255, 255, 0.12);
-      --text: #ffffff;
-      --button-bg: rgba(255, 255, 255, 0.05);
-      --button-hover: rgba(255, 255, 255, 0.15);
+      --text: #d4af37;
+      --button-bg: rgba(255, 255, 255, 0.08);
+      --button-hover: rgba(255, 255, 255, 0.16);
     }
 
     html, body {
@@ -41,9 +40,7 @@
     }
 
     @keyframes fall {
-      to {
-        transform: translateY(120vh);
-      }
+      to { transform: translateY(120vh); }
     }
 
     .container {
@@ -55,9 +52,12 @@
       align-items: center;
     }
 
+    h1, .subhead, .about {
+      color: var(--text);
+    }
+
     h1 {
       font-size: 2.5em;
-      color: var(--gold);
       margin-bottom: 20px;
     }
 
@@ -80,7 +80,6 @@
 
     .subhead {
       font-size: 1.3em;
-      color: var(--gold);
       margin-bottom: 12px;
     }
 
@@ -101,7 +100,7 @@
       color: var(--text);
       font-weight: 600;
       cursor: pointer;
-      transition: background-color 0.3s, transform 0.2s;
+      transition: background-color 0.3s;
     }
 
     .region-btn:hover {
@@ -120,7 +119,6 @@
       border-radius: 14px;
       max-width: 600px;
       line-height: 1.6;
-      color: var(--text);
       font-size: 1.05em;
     }
 
@@ -159,11 +157,11 @@
 
   <div class="container">
     <h1>ברוכים הבאים לפורטל שלנו</h1>
-    <a class="cta" href="index.html">להיכנס לאתר</a>
+    <a class="cta" href="landing.html">להיכנס לאתר</a>
 
     <div class="subhead">בחרו עיר</div>
     <div class="regions">
-      <button class="region-btn" onclick="location.href='index.html'">חיפה</button>
+      <button class="region-btn" onclick="location.href='landing.html'">חיפה</button>
       <button class="region-btn" disabled>תל אביב</button>
       <button class="region-btn" disabled>ירושלים</button>
       <button class="region-btn" disabled>אילת</button>
