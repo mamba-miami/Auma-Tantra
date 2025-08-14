@@ -2,11 +2,8 @@
 <html lang="he">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Auma Portal</title>
-  <meta name="description" content="עיסויים מקצועיים בחיפה - חוויה של רוגע, שחרור ומגע נעים.">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://auma.life/landing.html">
+  <title>Auma Massage Landing</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- Google Tag -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-C7ZYDZ8G5Y"></script>
@@ -17,115 +14,151 @@
     gtag('config', 'G-C7ZYDZ8G5Y');
   </script>
 
-  <!-- Стили -->
   <style>
-    html, body {
-      margin: 0; padding: 0;
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial;
-      background: transparent;
-      color: #222;
-    }
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-      background: url("https://i.postimg.cc/6px8nnCk/0-CB28-C10-4530-4-DF6-897-A-25-F7-A9-DB1-BE5.png") center/cover no-repeat;
+    :root {
+      --gold: #d4af37;
+      --bg: rgba(255, 255, 255, 0.12);
+      --text: #ffffff;
+      --button-bg: rgba(255, 255, 255, 0.05);
+      --button-hover: rgba(255, 255, 255, 0.15);
     }
 
-    .wrap {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100dvh;
-      padding: 24px 12px;
-      flex-direction: column;
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: url("https://i.postimg.cc/6px8nnCk/0-CB28-C10-4530-4-DF6-897-A-25-F7-A9-DB1-BE5.png") center/cover no-repeat fixed;
+      color: var(--text);
       text-align: center;
     }
 
-    .title {
-      font-size: clamp(28px, 5vw, 36px);
-      color: #fff;
-      margin-bottom: 20px;
-      text-shadow: 0 0 4px rgba(0,0,0,0.4);
-    }
-
-    .cta, .region-btn {
-      background: linear-gradient(180deg, #d4af37, #c19c27);
-      color: #111;
-      border: none;
-      border-radius: 12px;
-      padding: 14px 24px;
-      margin: 10px 6px;
-      font-size: 18px;
-      cursor: pointer;
-      transition: 0.2s;
-      min-width: 160px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-    }
-
-    .cta:hover, .region-btn:hover {
-      opacity: 0.85;
-    }
-
-    .region-btn[disabled] {
-      background: #ccc;
-      color: #666;
-      cursor: not-allowed;
-      opacity: 0.7;
-    }
-
-    .subhead {
-      color: #ffd700;
-      margin-top: 28px;
-      font-size: 20px;
-      font-weight: bold;
-    }
-
-    .regions {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-      gap: 12px;
-      margin: 16px 0;
-      max-width: 400px;
-      width: 100%;
-    }
-
-    .about {
-      background: rgba(255,255,255,0.8);
-      color: #222;
-      padding: 16px;
-      border-radius: 16px;
-      max-width: 540px;
-      line-height: 1.6;
-      font-size: 16px;
-    }
-
-    /* Лепестки */
     .leaf {
       position: fixed;
-      top: -60px;
-      z-index: 0;
+      top: -50px;
+      z-index: 1;
       animation: fall linear infinite;
+      pointer-events: none;
     }
 
     @keyframes fall {
       to {
-        transform: translateY(120vh) rotate(360deg);
+        transform: translateY(120vh);
       }
     }
 
-    @media (hover: none) and (pointer: coarse) {
-      .cta, .region-btn {
-        min-height: 48px;
-        font-size: 17px;
+    .container {
+      position: relative;
+      z-index: 2;
+      padding: 80px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+
+    .cta {
+      background: var(--gold);
+      color: #000;
+      padding: 14px 26px;
+      border: none;
+      border-radius: 12px;
+      font-weight: bold;
+      font-size: 1.1em;
+      cursor: pointer;
+      margin-bottom: 30px;
+      transition: background-color 0.3s;
+    }
+
+    .cta:hover {
+      background-color: #f1d96b;
+    }
+
+    .subhead {
+      font-size: 1.3em;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+
+    .regions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 30px;
+    }
+
+    .region-btn {
+      min-width: 110px;
+      padding: 10px 14px;
+      border-radius: 10px;
+      border: 1px solid var(--gold);
+      background: var(--button-bg);
+      color: var(--text);
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+
+    .region-btn:hover {
+      background: var(--button-hover);
+    }
+
+    .region-btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .about {
+      background: rgba(0, 0, 0, 0.4);
+      padding: 20px;
+      border-radius: 14px;
+      max-width: 600px;
+      line-height: 1.6;
+      color: var(--text);
+      font-size: 1.05em;
+    }
+
+    @media (max-width: 600px) {
+      .cta {
+        width: 100%;
+        font-size: 1em;
+      }
+      .region-btn {
+        flex: 1 1 40%;
       }
     }
   </style>
 </head>
+
 <body>
-  <div class="wrap">
-    <h1 class="title">ברוכים הבאים לפורטל שלנו</h1>
+
+  <!-- Падающие лепестки -->
+  <script>
+    (function(){
+      const COUNT = matchMedia('(max-width: 600px)').matches ? 16 : 28;
+      const IMG = "https://i.postimg.cc/cHm5k97s/List-png.png";
+      for (let i = 0; i < COUNT; i++) {
+        const el = document.createElement('img');
+        el.src = IMG;
+        el.className = "leaf";
+        el.style.left = Math.random() * 100 + "vw";
+        el.style.width = 18 + Math.random() * 24 + "px";
+        el.style.opacity = 0.25 + Math.random() * 0.5;
+        el.style.animationDuration = 15 + Math.random() * 10 + "s";
+        el.style.animationDelay = Math.random() * 5 + "s";
+        document.body.appendChild(el);
+      }
+    })();
+  </script>
+
+  <div class="container">
+    <h1>ברוכים הבאים לפורטל שלנו</h1>
     <a class="cta" href="index.html">להיכנס לאתר</a>
 
     <div class="subhead">בחרו עיר</div>
@@ -138,35 +171,10 @@
     </div>
 
     <div class="about">
-      אנו מציעים מגוון עיסויים מקצועיים לשחרור מתחים, הפחתת כאבים, שיפור זרימת הדם והרגעת הגוף והנפש.
+      אנו מציעים מגוון עיסויים מקצועיים לשחרור מתחים, הפחתת כאבים, שיפור זרימת הדם והרגעת הגוף והנפש.  
       כל הטיפולים מתבצעים על ידי מטפלים מוסמכים בעלי תעודה, באווירה נעימה וביתית.
     </div>
   </div>
 
-  <!-- Лепестки -->
-  <script>
-    (function(){
-      document.querySelectorAll('.leaf').forEach(n=>n.remove());
-      const isMob = matchMedia('(max-width: 600px)').matches;
-      const COUNT = isMob ? 16 : 28;
-      const IMG = "https://i.postimg.cc/cHm5k97s/List-png.png";
-      for (let i = 0; i < COUNT; i++) {
-        const el = document.createElement('img');
-        el.src = IMG;
-        el.alt = "";
-        el.className = "leaf";
-        const size = 18 + Math.random()*26;
-        const opac = 0.25 + Math.random()*0.45;
-        const dur  = 17 + Math.random()*11;
-        const del  = (Math.random()*6).toFixed(2);
-        el.style.width = size + "px";
-        el.style.opacity = opac;
-        el.style.left = (Math.random()*100) + "vw";
-        el.style.animationDuration = dur + "s";
-        el.style.animationDelay = del + "s";
-        document.body.appendChild(el);
-      }
-    })();
-  </script>
 </body>
 </html>
