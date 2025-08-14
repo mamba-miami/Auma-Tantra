@@ -1,13 +1,13 @@
-<!doctype html>
-<html lang="he" dir="rtl">
+<!DOCTYPE html>
+<html lang="he">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Auma Massage – ברוכים הבאים לפורטל שלנו</title>
-  <meta name="description" content="Auma Massage: עיסויים מקצועיים בחיפה – בריאות, רוגע ואווירה נעימה וביתית. קבעו טיפול היום.">
-  <link rel="icon" href="favicon.ico" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Auma Massage</title>
+  <meta name="description" content="עיסויים מקצועיים בחיפה עם מטפלים מוסמכים ובאווירה מרגיעה.">
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
 
-  <!-- Google Analytics -->
+  <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-C7ZYDZ8G5Y"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -19,127 +19,164 @@
   <style>
     :root {
       --gold: #d4af37;
+      --gold-30: rgba(212, 175, 55, 0.3);
       --text: #fff;
-      --bg: #121212;
+      --muted: #ccc;
+      --disabled: #888;
+      --tap: 44px;
     }
-    * {
-      box-sizing: border-box;
-    }
+
     body {
       margin: 0;
       font-family: sans-serif;
-      background: var(--bg);
+      background: #000;
       color: var(--text);
-      overflow-x: hidden;
     }
+
     .wrap {
-      max-width: 500px;
-      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .card {
+      max-width: 480px;
+      width: 100%;
       padding: 24px;
+      border-radius: 20px;
+      background: rgba(0, 0, 0, 0.7);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
       position: relative;
       z-index: 1;
     }
-    .card {
-      background: rgba(255,255,255,0.04);
-      border-radius: 16px;
-      padding: 24px;
-      box-shadow: 0 0 24px rgba(0,0,0,0.3);
-      backdrop-filter: blur(4px);
-    }
+
     .title {
-      font-size: 24px;
-      font-weight: bold;
+      font-size: clamp(22px, 6vw, 30px);
       text-align: center;
       margin-bottom: 18px;
+      color: var(--gold);
     }
+
     .cta {
       display: block;
-      background: var(--gold);
-      color: black;
       text-align: center;
-      padding: 14px;
+      background: var(--gold);
+      color: #000;
+      font-weight: bold;
+      padding: 12px;
       border-radius: 12px;
       text-decoration: none;
-      font-weight: bold;
-      margin-bottom: 20px;
+      margin-bottom: 24px;
     }
+
+    .subhead {
+      text-align: center;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+
     .regions {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
       gap: 12px;
-      margin-bottom: 20px;
+      margin: 10px 0 22px;
     }
+
     .region-btn {
-      min-height: 44px;
+      min-height: var(--tap);
       border-radius: 14px;
-      border: 1px solid var(--gold);
+      border: 1px solid var(--gold-30);
       background: rgba(255,255,255,0.04);
       color: var(--text);
       font-weight: 600;
       padding: 10px 14px;
       cursor: pointer;
-    }
-    .region-btn--active {
-      background: rgba(212,175,55,0.18);
-      border-color: var(--gold);
-    }
-    .region-btn[disabled] {
-      cursor: not-allowed;
-      opacity: 0.4;
-    }
-    .about {
-      margin-top: 16px;
-      background: rgba(255,255,255,0.04);
-      padding: 14px;
-      border-radius: 14px;
-      font-size: 15px;
-      line-height: 1.6;
-    }
-    .foot {
-      text-align: center;
-      margin-top: 20px;
-      font-size: 12px;
-      color: rgba(255,255,255,0.5);
+      transition: border-color .2s ease, background-color .2s ease, transform .1s ease;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.15) inset;
     }
 
-    /* Лепестки */
-    #petals {
+    .region-btn:hover { border-color: var(--gold); }
+    .region-btn:active { transform: translateY(1px); }
+
+    .region-btn--active {
+      background: linear-gradient(180deg, rgba(212,175,55,0.18), rgba(212,175,55,0.06));
+      border-color: var(--gold);
+      color: var(--text);
+    }
+
+    .region-btn[disabled] {
+      cursor: not-allowed;
+      color: var(--disabled);
+      border-color: rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.02);
+      opacity: 0.8;
+    }
+
+    .about {
+      margin-top: 8px;
+      padding: clamp(12px, 3vw, 18px);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 16px;
+      background: rgba(0,0,0,0.22);
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: clamp(15px, 2.6vw, 17px);
+    }
+
+    .foot {
+      margin-top: 16px;
+      font-size: 12px;
+      color: rgba(255,255,255,0.55);
+    }
+
+    @media (hover:none) and (pointer:coarse){
+      .cta, .region-btn { min-height: 48px; }
+    }
+
+    /* Падающие лепестки */
+    .petals {
       position: fixed;
       top: 0;
       left: 0;
-      width: 100vw;
-      height: 100vh;
+      width: 100%;
+      height: 100%;
       pointer-events: none;
       z-index: 0;
+      overflow: hidden;
     }
+
     .petal {
       position: absolute;
-      top: -10vh;
-      width: 20px;
-      height: 20px;
-      background: radial-gradient(circle, rgba(255,192,203,0.8), transparent);
+      top: -10px;
+      width: 12px;
+      height: 12px;
+      background: radial-gradient(circle, rgba(255,255,255,0.8) 30%, transparent 70%);
       border-radius: 50%;
-      animation-name: fall;
-      animation-timing-function: linear;
-      animation-iteration-count: infinite;
+      animation: fall 12s linear infinite;
+      opacity: 0.6;
     }
+
     @keyframes fall {
       to {
-        transform: translateY(110vh) translateX(var(--drift));
+        transform: translateY(100vh) translateX(var(--drift, 0));
+        opacity: 0;
       }
     }
   </style>
 </head>
 
 <body>
-  <div id="petals" aria-hidden="true"></div>
-
   <div class="wrap">
+    <div class="petals" aria-hidden="true" id="petals"></div>
+
     <main class="card" role="main" aria-labelledby="title">
       <h1 id="title" class="title">ברוכים הבאים לפורטל שלנו</h1>
 
       <a class="cta" href="index.html" rel="noopener">להיכנס לאתר</a>
 
+      <div class="subhead">בחרו עיר</div>
       <div class="regions" role="group" aria-label="בחירת עיר">
         <button class="region-btn region-btn--active" onclick="location.href='index.html'">חיפה</button>
         <button class="region-btn" disabled title="בקרוב">תל אביב</button>
@@ -158,24 +195,26 @@
   </div>
 
   <script>
-    // Генерация лепестков
     (function spawnPetals(){
       const c = document.getElementById('petals');
       const COUNT = 24;
       const vw = () => Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
-      for (let i = 0; i < COUNT; i++) {
+      for (let i=0; i<COUNT; i++){
         const p = document.createElement('div');
         p.className = 'petal';
         const x = Math.random() * vw() + 'px';
         const drift = (Math.random()*120 - 60) + 'px';
         const dur = (10 + Math.random()*10) + 's';
         const delay = (Math.random()*-20) + 's';
-        p.style.left = x;
+        p.style.setProperty('--x', x);
         p.style.setProperty('--drift', drift);
         p.style.animationDuration = dur;
         p.style.animationDelay = delay;
         c.appendChild(p);
       }
+      window.addEventListener('resize', () => {
+        [...c.children].forEach(el => el.style.setProperty('--x', Math.random()*vw() + 'px'));
+      });
     })();
   </script>
 </body>
