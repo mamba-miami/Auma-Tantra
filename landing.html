@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Auma Massage – ברוכים הבאים לפורטל שלנו</title>
+  <meta name="description" content="Auma Massage: עיסויים מקצועיים בחיפה – בריאות, רוגע ואווירה נעימה וביתית. קבעו טיפול היום.">
+  <link rel="icon" href="favicon.ico" />
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-C7ZYDZ8G5Y"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-C7ZYDZ8G5Y');
+  </script>
+
+  <style>
+    :root {
+      --gold: #d4af37;
+      --text: #fff;
+      --bg: #121212;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+    .wrap {
+      max-width: 500px;
+      margin: auto;
+      padding: 24px;
+      position: relative;
+      z-index: 1;
+    }
+    .card {
+      background: rgba(255,255,255,0.04);
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 0 24px rgba(0,0,0,0.3);
+      backdrop-filter: blur(4px);
+    }
+    .title {
+      font-size: 24px;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 18px;
+    }
+    .cta {
+      display: block;
+      background: var(--gold);
+      color: black;
+      text-align: center;
+      padding: 14px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+    .regions {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .region-btn {
+      min-height: 44px;
+      border-radius: 14px;
+      border: 1px solid var(--gold);
+      background: rgba(255,255,255,0.04);
+      color: var(--text);
+      font-weight: 600;
+      padding: 10px 14px;
+      cursor: pointer;
+    }
+    .region-btn--active {
+      background: rgba(212,175,55,0.18);
+      border-color: var(--gold);
+    }
+    .region-btn[disabled] {
+      cursor: not-allowed;
+      opacity: 0.4;
+    }
+    .about {
+      margin-top: 16px;
+      background: rgba(255,255,255,0.04);
+      padding: 14px;
+      border-radius: 14px;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+    .foot {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 12px;
+      color: rgba(255,255,255,0.5);
+    }
+
+    /* Лепестки */
+    #petals {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .petal {
+      position: absolute;
+      top: -10vh;
+      width: 20px;
+      height: 20px;
+      background: radial-gradient(circle, rgba(255,192,203,0.8), transparent);
+      border-radius: 50%;
+      animation-name: fall;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+    }
+    @keyframes fall {
+      to {
+        transform: translateY(110vh) translateX(var(--drift));
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="petals" aria-hidden="true"></div>
+
+  <div class="wrap">
+    <main class="card" role="main" aria-labelledby="title">
+      <h1 id="title" class="title">ברוכים הבאים לפורטל שלנו</h1>
+
+      <a class="cta" href="index.html" rel="noopener">להיכנס לאתר</a>
+
+      <div class="regions" role="group" aria-label="בחירת עיר">
+        <button class="region-btn region-btn--active" onclick="location.href='index.html'">חיפה</button>
+        <button class="region-btn" disabled title="בקרוב">תל אביב</button>
+        <button class="region-btn" disabled title="בקרוב">ירושלים</button>
+        <button class="region-btn" disabled title="בקרוב">אילת</button>
+        <button class="region-btn" disabled title="בקרוב">כל הארץ</button>
+      </div>
+
+      <div class="about">
+        אנו מציעים מגוון עיסויים מקצועיים לשחרור מתחים, הפחתת כאבים, שיפור זרימת הדם והרגעת הגוף והנפש.
+        כל הטיפולים מתבצעים על ידי מטפלים מוסמכים בעלי תעודה, באווירה נעימה וביתית.
+      </div>
+
+      <div class="foot">Auma Massage · Haifa</div>
+    </main>
+  </div>
+
+  <script>
+    // Генерация лепестков
+    (function spawnPetals(){
+      const c = document.getElementById('petals');
+      const COUNT = 24;
+      const vw = () => Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+      for (let i = 0; i < COUNT; i++) {
+        const p = document.createElement('div');
+        p.className = 'petal';
+        const x = Math.random() * vw() + 'px';
+        const drift = (Math.random()*120 - 60) + 'px';
+        const dur = (10 + Math.random()*10) + 's';
+        const delay = (Math.random()*-20) + 's';
+        p.style.left = x;
+        p.style.setProperty('--drift', drift);
+        p.style.animationDuration = dur;
+        p.style.animationDelay = delay;
+        c.appendChild(p);
+      }
+    })();
+  </script>
+</body>
+</html>
