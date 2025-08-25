@@ -1,20 +1,18 @@
-Готово, котик 💛 Вот полный landing.html с твоим видео (RDAjdvVQvQA), большой центрированный плеер, кнопка звука, и три быстрые кнопки (Звонок / WhatsApp / Telegram), плюс дисклеймер для модерации.
-
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-  <title>AUMA • Landing — עיסוי רפוי/טיפולי</title>
-  <meta name="description" content="עיסוי רפוי/טיפולי בקליניקה פרטית. אין שירותים מיניים.">
+  <title>AUMA • Landing — מגוון עיסויים מקצועיים</title>
+  <meta name="description" content="ב-Auma.life תמצאו מגוון עיסויים מקצועיים: טנטרה, שוודי, רקמות עמוק, עיסוי רפואי, רפלקסולוגיה ועוד — באווירה רגועה ונקייה.">
   <link rel="canonical" href="https://auma.life/landing.html"/>
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"/>
 
   <!-- Open Graph / Twitter -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="AUMA • Landing — עיסוי רפוי/טיפולי">
-  <meta property="og:description" content="עיסוי רפוי/טיפולי בקליניקה פרטית. אין שירותים מיניים.">
+  <meta property="og:title" content="AUMA • מגוון עיסויים מקצועיים">
+  <meta property="og:description" content="ב-Auma.life תמצאו מגוון עיסויים מקצועיים באווירה רגועה ונקייה.">
   <meta property="og:url" content="https://auma.life/landing.html">
   <meta property="og:image" content="https://img.youtube.com/vi/RDAjdvVQvQA/maxresdefault.jpg">
   <meta name="twitter:card" content="summary_large_image">
@@ -29,7 +27,7 @@
     "@context":"https://schema.org",
     "@type":"VideoObject",
     "name":"AUMA • Promo",
-    "description":"עיסוי רפוי/טיפולי בקליניקה פרטית. אין שירותים מיניים.",
+    "description":"ב-Auma.life תמצאו מגוון עיסויים מקצועיים באווירה רגועה ונקייה.",
     "thumbnailUrl":["https://img.youtube.com/vi/RDAjdvVQvQA/maxresdefault.jpg"],
     "embedUrl":"https://www.youtube.com/embed/RDAjdvVQvQA",
     "contentUrl":"https://www.youtube.com/watch?v=RDAjdvVQvQA"
@@ -48,16 +46,16 @@
     .wrap{ max-width:980px; margin:0 auto; padding:20px 14px; }
     header{ text-align:center; padding:16px 0 6px; }
     .logo{ max-width:200px; margin:0 auto 8px; animation:float 7s ease-in-out infinite; }
+    .tagline{ font-size:1.2rem; line-height:1.6; margin-top:10px; background:rgba(255,255,255,.7); padding:10px 14px; border-radius:12px; display:inline-block; }
     @keyframes float{ 0%,100%{transform:translateY(0)} 25%{transform:translateY(-10px)} 50%{transform:translateY(-18px)} 75%{transform:translateY(-12px)} }
 
     /* big centered video */
     .video-card{
-      max-width:840px; margin:10px auto; padding:12px;
+      max-width:840px; margin:20px auto; padding:12px;
       background:rgba(255,255,255,.66); backdrop-filter:blur(6px);
       border-radius:16px; box-shadow:0 8px 28px rgba(0,0,0,.08);
     }
     .box{ position:relative; width:100%; border-radius:12px; overflow:hidden; background:#000; box-shadow:0 6px 16px rgba(0,0,0,.12); }
-    /* делаем побольше: соотношение 16:9, но увеличенное */
     .box::before{ content:""; display:block; padding-top:56.25%; } /* 16:9 */
     .box iframe{ position:absolute; inset:0; width:100%; height:100%; border:0 }
     .poster{ position:absolute; inset:0; background:center/cover no-repeat; transition:opacity .4s; }
@@ -71,9 +69,6 @@
       background:rgba(255,255,255,.8); backdrop-filter:blur(4px); color:var(--ink);
     }
 
-    /* дисклеймер */
-    .disc{ text-align:center; font-size:14px; opacity:.8; margin:10px 0 4px; }
-
     /* нежные лепестки */
     .leaf{ position:fixed; top:-12vh; pointer-events:none; z-index:9999; opacity:.42; width:28px; height:auto; filter:saturate(140%); animation:sakuraFall linear infinite; }
     @keyframes sakuraFall{ 0%{transform:translate3d(0,-12vh,0) rotate(0)} 50%{transform:translate3d(6vw,48vh,0) rotate(90deg)} 100%{transform:translate3d(0,110vh,0) rotate(180deg)} }
@@ -85,6 +80,10 @@
   <div class="wrap">
     <header>
       <img class="logo" src="https://i.postimg.cc/25X72JpD/47-F699-D2-4-D62-4565-AB13-066240-EC2593.png" alt="AUMA MASSAGE • HEALING TOUCH">
+      <div class="tagline">
+        מחפשים עיסוי איכותי?<br>
+        ב-Auma.life תמצאו מגוון עיסויים מקצועיים: טנטרה, שוודי, רקמות עמוק, עיסוי רפואי, רפלקסולוגיה ועוד — באווירה רגועה ונקייה.
+      </div>
     </header>
 
     <section class="video-card" aria-label="AUMA Promo">
@@ -105,8 +104,6 @@
         <a class="btn" href="https://wa.me/972536112122" target="_blank" rel="noopener">🟢 WhatsApp</a>
         <a class="btn" href="https://t.me/Aumatherapy" target="_blank" rel="noopener">💬 Telegram</a>
       </div>
-
-      <p class="disc">עיסוי רפוי/טיפולי בקליניקה פרטית. אין שירותים מיניים.</p>
     </section>
   </div>
 
@@ -128,7 +125,7 @@
     })();
   </script>
 
-  <!-- кнопка звука, как на главной -->
+  <!-- кнопка звука -->
   <script>
     (function(){
       const iframe = document.getElementById('yt');
@@ -136,22 +133,17 @@
       const poster = document.getElementById('poster');
       if(!iframe || !btn) return;
 
-      // после загрузки немного прячем постер
       iframe.addEventListener('load', ()=>{ poster.style.opacity = '.0'; });
 
       let muted = true;
       btn.addEventListener('click', function(){
         muted = !muted;
         const cmd = muted ? 'mute' : 'unMute';
-        // YouTube IFrame Player API via postMessage
         iframe.contentWindow.postMessage(JSON.stringify({event:'command',func:cmd,args:[]}), '*');
         iframe.contentWindow.postMessage(JSON.stringify({event:'command',func:'playVideo',args:[]}), '*');
         btn.textContent = muted ? 'Sound: Off' : 'Sound: On';
-        poster.style.opacity = muted ? '.0' : '.0'; // оставим скрытым
       });
     })();
   </script>
 </body>
 </html>
-
-Если захочешь вариант с картинкой вместо видео — переделаю за минуту на ту же разметку, просто скажи 🫶
