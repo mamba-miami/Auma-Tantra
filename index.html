@@ -2,26 +2,33 @@
 <html lang="he" dir="rtl">
 <head>
   <meta charset="utf-8">
-  <title>AUMA • עיסוי טנטרה בחיפה</title>
+  <title>AUMA • עיסוי בחיפה</title>
 
-  <!-- Редирект на главную -->
-  <meta http-equiv="refresh" content="0; url=/index-v7.html">
+  <!-- КАНОНИКАЛ на целевую -->
+  <link rel="canonical" href="https://auma.life/index-v7.html?v=2025-04-25-1622">
 
-  <!-- Каноническая ссылка для Google -->
-  <link rel="canonical" href="https://auma.life/index-v7.html">
+  <!-- Разрешаем индексацию этой страницы-редиректа -->
+  <meta name="robots" content="index,follow">
 
-  <!-- Важно: говорим Google не индексировать этот редирект -->
-  <meta name="robots" content="noindex,follow">
+  <!-- Мгновенный редирект (fallback для случаев без JS) -->
+  <meta http-equiv="refresh" content="0; url=/index-v7.html?v=2025-04-25-1622">
 
-  <!-- Запасной редирект через JavaScript (если meta не сработает) -->
-  <script>
-    window.location.replace("/index-v7.html");
-  </script>
+  <!-- Немного метаданных, чтобы не раздражать Консоль -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-  <p>
-    Redirecting… אם אינך מועבר/ת אוטומטית,<br>
-    <a href="/index-v7.html">לחץ/י כאן</a>.
+  <p>מעבירים אותך לדף הראשי… אם אינך מועבר/ת אוטומטית,
+    <a href="/index-v7.html?v=2025-04-25-1622">לחץ/י כאן</a>.
   </p>
+
+  <!-- JS-редирект на случай, если meta refresh блокируется -->
+  <script>
+    (function () {
+      var target = "/index-v7.html?v=2025-04-25-1622";
+      if (location.pathname + location.search !== target) {
+        location.replace(target);
+      }
+    })();
+  </script>
 </body>
 </html>
