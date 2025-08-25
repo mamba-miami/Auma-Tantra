@@ -1,178 +1,167 @@
 <!DOCTYPE html>
-<html lang="he">
+<html lang="he" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <title>Auma Massage Landing</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-  <!-- Google Tag -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-C7ZYDZ8G5Y"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){ dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-C7ZYDZ8G5Y');
+  <title>AUMA • טנטרה בחיפה — עיסוי טנטרה, עיסוי מפנק ועיסוי רפואי</title>
+  <meta name="description" content="AUMA — טנטרה בחיפה. עיסוי טנטרה מקצועי, עיסוי מפנק ועיסוי רפואי בקליניקה פרטית ונקייה. תיאום מראש.">
+  <link rel="canonical" href="https://auma.life/"/>
+
+  <!-- hreflang -->
+  <link rel="alternate" hreflang="he" href="https://auma.life/">
+  <link rel="alternate" hreflang="ru" href="https://auma.life/">
+  <link rel="alternate" hreflang="x-default" href="https://auma.life/">
+
+  <!-- Robots -->
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"/>
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="AUMA • טנטרה בחיפה — עיסוי טנטרה, עיסוי מפנק ועיסוי רפואי">
+  <meta property="og:description" content="עיסוי טנטרה מקצועי בחיפה. חוויה מרגיעה ומלאת אהבה לעצמך, קליניקה פרטית ונקייה. תיאום מראש.">
+  <meta property="og:url" content="https://auma.life/">
+  <meta property="og:image" content="https://i.postimg.cc/YCjFd4jZ/IMG-3410.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="he_IL">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AUMA • טנטרה בחיפה — עיסוי טנטרה, עיסוי מפנק ועיסוי רפואי">
+  <meta name="twitter:description" content="עיסוי טנטרה מקצועי בחיפה. קליניקה פרטית ונקייה. תיאום מראש.">
+  <meta name="twitter:image" content="https://i.postimg.cc/YCjFd4jZ/IMG-3410.jpg">
+
+  <!-- JSON-LD: VideoObject -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"VideoObject",
+    "name":"AUMA • Tantra Massage",
+    "description":"עיסוי רפוי ומפנק בקליניקה פרטית בחיפה.",
+    "thumbnailUrl":["https://img.youtube.com/vi/P2FA1aRDkIU/maxresdefault.jpg"],
+    "uploadDate":"2025-01-15T12:00:00+03:00",
+    "duration":"PT0M45S",
+    "embedUrl":"https://www.youtube.com/embed/P2FA1aRDkIU",
+    "contentUrl":"https://www.youtube.com/watch?v=P2FA1aRDkIU"
+  }
   </script>
 
+  <!-- ===== стили ===== -->
   <style>
-    :root {
-      --gold: #d4af37;
-      --text: #d4af37;
-      --button-bg: rgba(255, 255, 255, 0.08);
-      --button-hover: rgba(255, 255, 255, 0.16);
-    }
-
-    html, body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: url("https://i.postimg.cc/6px8nnCk/0-CB28-C10-4530-4-DF6-897-A-25-F7-A9-DB1-BE5.png") center/cover no-repeat fixed;
-      color: var(--text);
-      text-align: center;
-    }
-
-    .leaf {
-      position: fixed;
-      top: -50px;
-      z-index: 1;
-      animation: fall linear infinite;
-      pointer-events: none;
-    }
-
-    @keyframes fall {
-      to { transform: translateY(120vh); }
-    }
-
-    .container {
-      position: relative;
-      z-index: 2;
-      padding: 80px 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    h1, .subhead, .about {
-      color: var(--text);
-    }
-
-    h1 {
-      font-size: 2.5em;
-      margin-bottom: 20px;
-    }
-
-    .cta {
-      background: var(--gold);
-      color: #000;
-      padding: 14px 26px;
-      border: none;
-      border-radius: 12px;
-      font-weight: bold;
-      font-size: 1.1em;
-      cursor: pointer;
-      margin-bottom: 30px;
-      transition: background-color 0.3s;
-    }
-
-    .cta:hover {
-      background-color: #f1d96b;
-    }
-
-    .subhead {
-      font-size: 1.3em;
-      margin-bottom: 12px;
-    }
-
-    .regions {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 12px;
-      margin-bottom: 30px;
-    }
-
-    .region-btn {
-      min-width: 110px;
-      padding: 10px 14px;
-      border-radius: 10px;
-      border: 1px solid var(--gold);
-      background: var(--button-bg);
-      color: var(--text);
-      font-weight: 600;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-
-    .region-btn:hover {
-      background: var(--button-hover);
-    }
-
-    .region-btn:disabled {
-      opacity: 0.4;
-      cursor: not-allowed;
-      border-color: rgba(255, 255, 255, 0.3);
-    }
-
-    .about {
-      background: rgba(0, 0, 0, 0.4);
-      padding: 20px;
-      border-radius: 14px;
-      max-width: 600px;
-      line-height: 1.6;
-      font-size: 1.05em;
-    }
-
-    @media (max-width: 600px) {
-      .cta {
-        width: 100%;
-        font-size: 1em;
-      }
-      .region-btn {
-        flex: 1 1 40%;
-      }
-    }
+    :root{ --gold:#c5a746; --ink:#6b5720; }
+    html,body{ margin:0; padding:0; font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial; }
+    a{ color:inherit; text-decoration:none }
+    img{ display:block; max-width:100%; height:auto }
+    body{ background:transparent; color:var(--ink) }
+    .bg{ position:fixed; inset:0; z-index:-1; background:url("https://i.postimg.cc/6px8nnCk/0-CB28-C10-4530-4-DF6-897-A-25-F7-A9-DB1-BE5.png") center/cover no-repeat; }
+    header{ text-align:center; padding:16px 12px }
+    .logo-top{ max-width:240px; margin:0 auto; background:transparent; animation:float 7s ease-in-out infinite; will-change:transform; }
+    @keyframes float{ 0%,100%{ transform:translateY(0) } 25%{ transform:translateY(-12px) } 50%{ transform:translateY(-20px) } 75%{ transform:translateY(-14px) } }
+    .layout{ max-width:1200px; margin:0 auto; padding:0 12px }
+    .grid{ display:grid; gap:20px; grid-template-columns: 1fr 360px; }
+    @media (max-width: 980px){ .grid{ grid-template-columns:1fr } }
+    .hero{ background:rgba(255,255,255,.65); backdrop-filter: blur(6px); border-radius:16px; padding:24px; box-shadow:0 6px 30px rgba(0,0,0,.06) }
+    .cta{ display:flex; gap:12px; flex-wrap:wrap; margin-top:12px }
+    .btn{ display:inline-block; padding:10px 16px; border:1px solid var(--gold); border-radius:999px; }
+    .aside{ position:relative }
+    .shorts-wrap{ position:sticky; top:12px }
+    .shorts-box{ position:relative; width:100%; aspect-ratio:9/16; border-radius:16px; overflow:hidden; box-shadow:0 6px 30px rgba(0,0,0,.08) }
+    .shorts-poster{ position:absolute; inset:0; background-size:cover; background-position:center; transition:opacity .3s ease; }
+    .sound-toggle{ position:absolute; left:12px; bottom:12px; z-index:2; padding:8px 10px; border:1px solid var(--gold); border-radius:999px; }
+    .overlay{ display:none; position:fixed; inset:0; background:rgba(0,0,0,.6); backdrop-filter:blur(3px); z-index:999 }
+    .overlay .panel{ position:absolute; inset:auto 12px 12px 12px; background:#fff; border-radius:14px; padding:14px; }
+    .mini-btn{ display:inline-block; padding:8px 10px; border:1px solid var(--gold); border-radius:999px; margin-top:8px }
+    .seo-micro{ margin:32px auto 12px; max-width:980px; padding:0 16px; font-size:12px; line-height:1.6; color:#9aa; text-align:center }
   </style>
 </head>
 
 <body>
+  <div class="bg" aria-hidden="true"></div>
 
-  <!-- Падающие лепестки -->
+  <header>
+    <img alt="AUMA Massage logo" class="logo-top" src="https://i.postimg.cc/25X72JpD/47-F699-D2-4-D62-4565-AB13-066240-EC2593.png"/>
+
+    <div style="margin-top:10px">
+      <h1 style="margin:0 0 6px 0;">מחפשים עיסוי איכותי? הגעתם למקום הנכון.</h1>
+      <p style="margin:0">ב-Auma.life תמצאו מטפלים נבחרים מהצפון ומהמרכז עם מגוון טיפולים מותאמי-אישית, באווירה רגועה.</p>
+    </div>
+  </header>
+
+  <main class="layout grid">
+    <section class="hero" aria-label="AUMA services">
+      <article>
+        <h2 style="margin-top:0">AUMA • Tantra Massage</h2>
+        <p>חוויה מרגיעה ומלאת אהבה לעצמך. בקליניקה פרטית ונקייה.</p>
+
+        <div class="cta">
+          <a class="btn" href="tel:+972558838894">📞 הזמנה בטלפון</a>
+          <a class="btn" href="https://t.me/aummassage" target="_blank" rel="noopener">💬 Telegram</a>
+          <a class="btn" href="https://wa.me/972536112122" target="_blank" rel="noopener">🟢 WhatsApp</a>
+          <a class="btn" href="#" data-open="panda">📜 Services</a>
+        </div>
+      </article>
+    </section>
+
+    <aside class="aside">
+      <section class="shorts-wrap" aria-label="AUMA intro video">
+        <div class="shorts-box">
+          <iframe
+            id="aumaShorts"
+            src="https://www.youtube.com/embed/P2FA1aRDkIU?autoplay=1&mute=1&loop=1&playlist=P2FA1aRDkIU&modestbranding=1&playsinline=1&rel=0&enablejsapi=1"
+            title="AUMA • Tantra Massage — video"
+            allow="autoplay; encrypted-media; picture-in-picture"
+            allowfullscreen
+            loading="lazy"></iframe>
+          <div class="shorts-poster"
+               style="background-image:url('https://i.postimg.cc/YCjFd4jZ/IMG-3410.jpg');"></div>
+          <button class="sound-toggle" id="soundToggle">Sound: Off</button>
+        </div>
+      </section>
+    </aside>
+  </main>
+
+  <!-- плавающая кнопка WhatsApp -->
+  <a href="https://wa.me/972536112122" target="_blank" rel="noopener"
+     aria-label="WhatsApp"
+     style="position:fixed;right:16px;bottom:16px;padding:12px 14px;border:1px solid #c5a746;border-radius:999px;background:rgba(0,0,0,.45);backdrop-filter:blur(4px);color:#fff;text-decoration:none;z-index:9999;">💬 WhatsApp</a>
+
+  <!-- тихий SEO-текст -->
+  <p class="seo-micro" dir="rtl">
+    Auma.life – קליניקה פרטית לעיסוי בחיפה: עיסוי רפוי, עיסוי מפנק, טנטרה בחיפה, עיסוי בקליניקה פרטית.
+  </p>
+
   <script>
     (function(){
-      const COUNT = matchMedia('(max-width: 600px)').matches ? 16 : 28;
-      const IMG = "https://i.postimg.cc/cHm5k97s/List-png.png";
-      for (let i = 0; i < COUNT; i++) {
-        const el = document.createElement('img');
-        el.src = IMG;
-        el.className = "leaf";
-        el.style.left = Math.random() * 100 + "vw";
-        el.style.width = 18 + Math.random() * 24 + "px";
-        el.style.opacity = 0.25 + Math.random() * 0.5;
-        el.style.animationDuration = 15 + Math.random() * 10 + "s";
-        el.style.animationDelay = Math.random() * 5 + "s";
-        document.body.appendChild(el);
+      const iframe=document.getElementById('aumaShorts');
+      const poster=document.querySelector('.shorts-poster');
+      const toggle=document.getElementById('soundToggle');
+      if(iframe && poster && toggle){
+        toggle.addEventListener('click',()=>{
+          const url=new URL(iframe.src);
+          const isMuted=url.searchParams.get('mute')==='1';
+          url.searchParams.set('mute', isMuted ? '0' : '1');
+          iframe.src=url.toString();
+          toggle.textContent = 'Sound: ' + (isMuted ? 'On' : 'Off');
+          poster.style.opacity = isMuted ? '0' : '1';
+        });
       }
+      document.querySelectorAll('[data-open]').forEach(btn=>{
+        btn.addEventListener('click',()=>{
+          const id = btn.getAttribute('data-open');
+          const el = document.getElementById(id);
+          if(el) el.style.display='block';
+        });
+      });
+      document.querySelectorAll('.mini-btn').forEach(b=>{
+        b.addEventListener('click',()=>{ b.closest('.overlay').style.display='none'; });
+      });
+      document.addEventListener('keydown',e=>{
+        if(e.key==='Escape'){
+          document.querySelectorAll('.overlay').forEach(o=>o.style.display='none');
+        }
+      });
     })();
   </script>
-
-  <div class="container">
-    <h1>ברוכים הבאים לפורטל שלנו</h1>
-    <a class="cta" href="landing.html">להיכנס לאתר</a>
-
-    <div class="subhead">בחרו עיר</div>
-    <div class="regions">
-      <button class="region-btn" onclick="location.href='landing.html'">חיפה</button>
-      <button class="region-btn" disabled>תל אביב</button>
-      <button class="region-btn" disabled>ירושלים</button>
-      <button class="region-btn" disabled>אילת</button>
-      <button class="region-btn" disabled>כל הארץ</button>
-    </div>
-
-    <div class="about">
-      אנו מציעים מגוון עיסויים מקצועיים לשחרור מתחים, הפחתת כאבים, שיפור זרימת הדם והרגעת הגוף והנפש.  
-      כל הטיפולים מתבצעים על ידי מטפלים מוסמכים בעלי תעודה, באווירה נעימה וביתית.
-    </div>
-  </div>
-
 </body>
 </html>
